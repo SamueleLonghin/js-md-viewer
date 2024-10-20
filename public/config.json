@@ -17,5 +17,6 @@
             }
         }
     },
-    "resources-folder": "/js-md-viewer/risorse/"
+    "resources-folder": "/risorse/",
+    "preview": true
 }

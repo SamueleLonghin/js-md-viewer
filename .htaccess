@@ -20,6 +20,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Reindirizza tutte le altre richieste verso index.html
-RewriteRule ^(.*)$ /js-md-viewer/index.html [L]
+RewriteRule ^(.*)$ /js-md-viewer/index.php [L]
 
 # RewriteRule ^(.*)$ /js-md-viewer/index.html [L]

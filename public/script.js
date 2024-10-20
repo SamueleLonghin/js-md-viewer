@@ -127,7 +127,6 @@ function getFilePath(macroargomento, argomento) {
         return resources_folder + topic_folder + file
     } else {
         return false
-        document.getElementById('content').innerHTML = 'Argomento non trovato';
     }
 }
 
