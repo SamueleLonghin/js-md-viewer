@@ -1,0 +1,25 @@
+# RewriteEngine On
+
+# # RewriteCond %{REQUEST_FILENAME} !-f
+# # RewriteCond %{REQUEST_FILENAME} !-d
+# # RewriteRule . index.html [L]
+
+
+# #Riscrivi tutte le richieste alla cartella o sue sottocartelle verso index.html
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+
+
+
+RewriteEngine On
+
+# Escludi le richieste a file esistenti
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Escludi le richieste a directory esistenti
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Reindirizza tutte le altre richieste verso index.html
+RewriteRule ^(.*)$ /js-md-viewer/index.html [L]
+
+# RewriteRule ^(.*)$ /js-md-viewer/index.html [L]

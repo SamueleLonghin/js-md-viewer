@@ -1,0 +1,21 @@
+{
+    "topics": {
+        "programmazione-web": {
+            "chapters": {
+                "Dispensa HTML": "html.md",
+                "Dispensa CSS": "css.md",
+                "Routing delle Risorse": "routing.md",
+                "Introduzione a Bootstrap": "boostrap.md",
+                "Introduzione alla programmazione WEB": "web.md"
+            },
+            "lang": "html",
+            "preview": true
+        },
+        "c++": {
+            "chapters": {
+                "Gestione della memoria": "gesionememoria.md"
+            }
+        }
+    },
+    "resources-folder": "/js-md-viewer/risorse/"
+}
