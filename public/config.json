@@ -9,12 +9,16 @@
                 "Introduzione alla programmazione WEB": "web.md"
             },
             "lang": "html",
-            "preview": true
+            "preview": true,
+            "folder": "programmazione-web/",
+            "label": "Programmazione per il WEB"
         },
         "c++": {
             "chapters": {
                 "Gestione della memoria": "gesionememoria.md"
-            }
+            },
+            "label": "Programmazione in C++"
+
         }
     },
     "resources-folder": "/risorse/",

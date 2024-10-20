@@ -60,6 +60,10 @@ function getRoute() {
     // Se l'URL non è completo, restituisci null
     return null;
 }
+function valOrDefault($dict, $key, $default = null){
+    return isset($dict[$key]) ? $dict[$key] : $default;
+}
+
 
 // Carica il file di configurazione
 $config = loadConfig();
@@ -70,24 +74,36 @@ if (!$config) {
 // Estrai macroargomento e argomento dall'URL
 $route = getRoute();
 $markdownContent = '';
+$preview = valOrDefault($config,"preview",false);
+$language = valOrDefault($config,"language",null);
 
-// var_dump($route);
-// die();
-$macroargomento = $route['macroargomento']?:null;
-$argomento = $route['argomento']?:null;
+
+$macroargomento = valOrDefault($route, 'macroargomento');
 if($macroargomento){
+    $argomento = valOrDefault($route,'argomento');
 
-    // Ottieni il percorso del file markdown dal config.json
-    $markdownPath = getMarkdownPath($config, $macroargomento, $argomento);
-
-    // Carica il contenuto markdown se il percorso è valido
-    if ($markdownPath) {
-        $markdownContent = fetchMarkdownContent($markdownPath);
-    } else {
-        $markdownContent = 'Errore: Argomento non trovato nel file di configurazione.';
+    if($argomento){
+        // Ottieni il percorso del file markdown dal config.json
+        $markdownPath = getMarkdownPath($config, $macroargomento, $argomento);
+        
+        // Carica il contenuto markdown se il percorso è valido
+        if ($markdownPath) {
+            $markdownContent = fetchMarkdownContent($markdownPath);
+        } else {
+            $markdownContent = 'Errore: Argomento non trovato nel file di configurazione.';
+        }
+    }
+    else {
+        $markdownContent = <<<'EOD'
+        ## Seleziona un Argomento per iniziare
+    
+        EOD;
     }
 } else {
-    $markdownContent = 'Seleziona un MacroArgomento per iniziare';
+    $markdownContent = <<<'EOD'
+    ## Seleziona un Super Argomento per iniziare
+
+    EOD;
 }
 ?>
 
@@ -119,15 +135,26 @@ if($macroargomento){
                 <h2>Documenti</h2>
                 <div id="fileList">
                     <?php
-                    foreach($config['topics'][$macroargomento]['chapters'] as $label => $link){
-                        $link = urlencode($label);
-                        echo "<a href='$link' class='text-reset file-link'> {$label} </a>";
+                    if($macroargomento){
+                        foreach($config['topics'][$macroargomento]['chapters'] as $label => $link){
+                            $link = urlencode($label);
+                            echo "<a href='/$macroargomento/$link' class='text-reset file-link'> {$label} </a>";
+                        }
+                    }
+                    else{
+                        foreach($config['topics'] as $topic => $val){
+                            $label = $val['label'];
+                            $link = urlencode($topic);
+                            echo "<a href='$link' class='text-reset file-link'> {$label} </a>";
+                         }
                     }
                     ?>
                 </div>
             </div>
-            <h3>Capitoli</h3>
-            <div id="chapterList"></div>
+            <div class="chapters-section <?= !$argomento?'d-none':'' ?>" >
+                <h3>Capitoli</h3>
+                <div id="chapterList"></div>
+            </div>
         </div>
         <div id="content">
             <div id="output" class="bordered"></div>
@@ -145,8 +172,8 @@ if($macroargomento){
         <script src="/public/prism.js"></script>
 
         <script>
-            preview =  <?= json_encode( $config['preview'] )?>;
-            language = <?= json_encode( $config['language'] )?>;
+            preview =  <?= json_encode( $preview )?>;
+            language = <?= json_encode( $language )?>;
             content = <?= json_encode($markdownContent) ?>
         </script>
 
