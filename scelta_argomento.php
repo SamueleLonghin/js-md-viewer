@@ -17,7 +17,7 @@ global $config, $BASE_PATH, $macroargomento;
             <?php foreach ($config['topics'][$macroargomento]['chapters'] as $argomentoKey => $chapter): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="<?= $config['resources-folder'] . $chapter['cover_image'] ?>" class="card-img-top" alt="<?= $argomentoKey ?>">
+                        <img src="<?= $chapter['cover_image'] ?>" class="card-img-top" alt="<?= $argomentoKey ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $argomentoKey ?></h5>
                             <p class="card-text"><?= $chapter['description'] ?></p>

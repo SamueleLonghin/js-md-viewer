@@ -17,7 +17,7 @@ global $config, $BASE_PATH;
             <?php foreach ($config['topics'] as $key => $topic): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="<?= $config['resources-folder'] . $topic['cover_image'] ?>" class="card-img-top" alt="<?= $topic['label'] ?>">
+                        <img src="<?= $topic['cover_image'] ?>" class="card-img-top" alt="<?= $topic['label'] ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $topic['label'] ?></h5>
                             <p class="card-text"><?= $topic['description'] ?></p>
