@@ -244,6 +244,9 @@ pre {
     .code-preview-flex {
         flex-direction: column;
     }
+    .code-preview-flex  * {
+        flex: 0;
+    }
 }
 
 /* Bootstrap Utility Classes */
@@ -253,4 +256,12 @@ pre {
 
 .chapter-link:hover {
     color: var(--bs-secondary);
+}
+
+.language {
+    max-width: 100%;
+}
+
+.code-preview-flex  * {
+    flex: 1;
 }

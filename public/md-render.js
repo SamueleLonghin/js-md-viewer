@@ -27,10 +27,12 @@ function displayMarkdownContent(content) {
     output.appendChild(container);
     container.querySelectorAll('pre code').forEach((block) => {
         console.log(preview)
+        // Prendo l'elemento radice            
+        base = block.parentElement;
+        base.classList.add("language")
+
         if (preview && block.classList.contains('language-html') && !block.innerHTML.includes("style")) {
 
-            // Prendo l'elemento radice            
-            base = block.parentElement;
 
             // Creo l'anteprima
             const previewContainer = document.createElement('div');
