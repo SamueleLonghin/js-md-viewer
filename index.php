@@ -1,4 +1,5 @@
 <?php
+$BASE_PATH = '/js-md-viewer//';
 
 // Funzione per caricare il file config.json e restituire i dati
 function loadConfig() {
@@ -30,7 +31,7 @@ function fetchMarkdownContent($path) {
     if (file_exists($path)) {
         return file_get_contents($path); // Ritorna il contenuto del file markdown
     } else {
-        return 'Errore: file non trovato!';
+        return 'Errore: file non trovato! ('.$path.")";
     }
 }
 
@@ -82,6 +83,9 @@ $macroargomento = valOrDefault($route, 'macroargomento');
 if($macroargomento){
     $argomento = valOrDefault($route,'argomento');
 
+    $preview = valOrDefault($config['topics'][$macroargomento],"preview",$preview);
+    $language = valOrDefault($config['topics'][$macroargomento],"language",$language);
+
     if($argomento){
         // Ottieni il percorso del file markdown dal config.json
         $markdownPath = getMarkdownPath($config, $macroargomento, $argomento);
@@ -118,9 +122,8 @@ if($macroargomento){
         <meta charset="UTF-8">
         <meta name="author" content="Samuele Longhin">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/public/prism.css">
-        <link rel="stylesheet" href="/public/site.css">
-        <link rel="stylesheet" href="/public/prism.css" />
+        <link rel="stylesheet" href="<?=$BASE_PATH?>public/prism.css">
+        <link rel="stylesheet" href="<?=$BASE_PATH?>public/site.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     </head>
@@ -129,7 +132,7 @@ if($macroargomento){
 
     <body>
 
-        <button id="sidebar-toggle">☰</button>
+        <button id="sidebar-toggle"> ☰ </button>
         <div id="sidebar">
             <div class="file-section">
                 <h2>Documenti</h2>
@@ -169,7 +172,7 @@ if($macroargomento){
             </footer>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/14.1.2/marked.min.js"></script>
-        <script src="/public/prism.js"></script>
+        <script src="<?=$BASE_PATH?>public/prism.js"></script>
 
         <script>
             preview =  <?= json_encode( $preview )?>;
@@ -178,8 +181,8 @@ if($macroargomento){
         </script>
 
 
-        <script src="/public/md-render.js"></script>
-        <script src="/public/script-php.js"></script>
+        <script src="<?=$BASE_PATH?>public/md-render.js"></script>
+        <script src="<?=$BASE_PATH?>public/script-php.js"></script>
     </body>
 
 </html>
