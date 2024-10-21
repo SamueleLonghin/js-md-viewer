@@ -1,5 +1,4 @@
 <?php
-$BASE_PATH = '/js-md-viewer//';
 
 // Funzione per caricare il file config.json e restituire i dati
 function loadConfig() {
@@ -76,6 +75,9 @@ if (!$config) {
 }
 
 // Estrai macroargomento e argomento dall'URL
+
+$BASE_PATH = valOrDefault($config,"base-path",'/') ;
+
 $route = getRoute();
 $markdownContent = '';
 $preview = valOrDefault($config,"preview",false);
