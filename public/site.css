@@ -110,9 +110,12 @@ footer{
 
 body {
     font-family: Arial, sans-serif;
-    display: flex;
     height: 100vh;
     margin: 0;
+}
+
+.view-container {
+    display: flex;
 }
 
 #sidebar {
@@ -244,7 +247,8 @@ pre {
     .code-preview-flex {
         flex-direction: column;
     }
-    .code-preview-flex  * {
+
+    .code-preview-flex * {
         flex: 0;
     }
 }
@@ -262,6 +266,12 @@ pre {
     max-width: 100%;
 }
 
-.code-preview-flex  * {
+.code-preview-flex * {
     flex: 1;
+}
+
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
 }

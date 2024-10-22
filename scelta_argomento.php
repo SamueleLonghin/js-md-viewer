@@ -1,17 +1,12 @@
 <?php
 // Rendi globali le variabili necessarie
-global $config, $BASE_PATH, $macroargomento;
+global $config, $BASE_PATH, $macroargomento, $title;
+
+require "head.php";
 ?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleziona Argomento</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
 <body>
     <div class="container mt-5">
+        
         <h1 class="text-center mb-4"><?= $config['topics'][$macroargomento]['label'] ?></h1>
         <div class="row">
             <?php foreach ($config['topics'][$macroargomento]['chapters'] as $argomentoKey => $chapter): ?>
@@ -28,5 +23,11 @@ global $config, $BASE_PATH, $macroargomento;
             <?php endforeach; ?>
         </div>
     </div>
+    <!-- Aggiungi il pulsante indietro in cima alla pagina -->
+    <a href="/" class="btn btn-outline-secondary back-button mb-4">
+        <i class="bi bi-arrow-left"></i> Torna ai Corsi
+    </a>
+    <?php require "footer.php"?>
+
 </body>
 </html>

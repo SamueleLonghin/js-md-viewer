@@ -1,12 +1,11 @@
 <?php
-global $argomento;
-global $BASE_PATH;
+global $argomento,$title, $BASE_PATH;
 ?>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-
-
     <title>
-        <?php echo isset($argomento) ? htmlspecialchars($argomento) : 'Argomenti'; ?>
+        <?php echo $title ?>
     </title>
     <meta charset="UTF-8">
     <meta name="author" content="Samuele Longhin">

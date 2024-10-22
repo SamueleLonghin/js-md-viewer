@@ -1,15 +1,10 @@
 <?php
 // Rendi globali le variabili necessarie
-global $config, $BASE_PATH;
+global $config, $BASE_PATH, $title;
+
+require "head.php";
 ?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scegli un Modulo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Seleziona un Modulo</h1>
@@ -28,5 +23,7 @@ global $config, $BASE_PATH;
             <?php endforeach; ?>
         </div>
     </div>
+    <?php require "footer.php"?>
+
 </body>
 </html>
