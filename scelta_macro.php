@@ -7,12 +7,12 @@ global $config, $BASE_PATH;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleziona Macroargomento</title>
+    <title>Scegli un Modulo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Seleziona un Macroargomento</h1>
+        <h1 class="text-center mb-4">Seleziona un Modulo</h1>
         <div class="row">
             <?php foreach ($config['topics'] as $key => $topic): ?>
                 <div class="col-md-4 mb-4">
