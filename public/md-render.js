@@ -1,9 +1,7 @@
-function previewHTML(base, block) {
+function previewCode(base) {
     // Creo l'anteprima
     const previewContainer = document.createElement('div');
-    previewContainer.classList.add('render-html');
-    previewContainer.innerHTML = block.textContent;
-
+    previewContainer.classList.add('render-code');
 
     // Creazione della griglia per visualizzare codice e anteprima
     const flexContainer = document.createElement('div');
@@ -11,31 +9,33 @@ function previewHTML(base, block) {
 
     // Sostituisci il blocco originale con il flexContainer
     base.replaceWith(flexContainer)
+
     // Agiungo entrambi i figli ovvero quello che prima era il blocco e l'anteprima
     flexContainer.appendChild(base)
     flexContainer.appendChild(previewContainer);
+
+
+    return previewContainer
+}
+
+
+function previewHTML(base, block) {
+    // Ottengo il blocco per la preview
+    previewContainer = previewCode(base);
+    // Inserisco il codice dentro al blocco
+    previewContainer.innerHTML = block.textContent;
 }
 function previewPython(preElement, codeElement) {
 
-    // Creo l'anteprima
-    const previewContainer = document.createElement('div');
-    previewContainer.classList.add('render-html');
-
-    // Creazione della griglia per visualizzare codice e anteprima
-    const flexContainer = document.createElement('div');
-    flexContainer.classList.add('code-preview-flex');
-
     // Crea il pulsante "Esegui"
     const runButton = document.createElement('button');
+    runButton.classList.add('run-button');
     runButton.textContent = 'Esegui';
-    runButton.style.margin = '10px';
+
 
     // Crea un div per mostrare l'output
     const outputDiv = document.createElement('div');
-    outputDiv.style.marginTop = '10px';
-    outputDiv.style.border = '1px solid #ccc';
-    outputDiv.style.padding = '10px';
-    outputDiv.style.backgroundColor = '#f9f9f9';
+    outputDiv.classList.add('code-output');
 
     // Funzione per eseguire il codice Python quando il pulsante viene cliccato
     runButton.addEventListener('click', function () {
@@ -76,36 +76,11 @@ function previewPython(preElement, codeElement) {
                 outputDiv.textContent = 'Si è verificato un errore durante l\'esecuzione.';
             });
 
-
-
-
-        // Invia il codice al server tramite fetch
-        // fetch('/api/run-code.php', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         code: code,
-        //         user_id: 'utente1' // Qui puoi aggiungere la logica per identificare l'utente
-        //     }),
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         // Mostra l'output del codice nel div
-        //         outputDiv.textContent = data.output;
-        //     })
-        //     .catch(error => {
-        //         // Gestisce eventuali errori
-        //         outputDiv.textContent = 'Errore durante l\'esecuzione del codice: ' + error;
-        //     });
     });
 
-    // Sostituisci il blocco originale con il flexContainer
-    base.replaceWith(flexContainer)
-    // Agiungo entrambi i figli ovvero quello che prima era il blocco e l'anteprima
-    flexContainer.appendChild(base)
-    flexContainer.appendChild(previewContainer)
+    // Creo il blocco per la preview
+    const previewContainer = previewCode(preElement)
+
     // Inserisce il pulsante e il div dell'output dopo il blocco <pre>
     previewContainer.append(runButton, outputDiv);
 }
