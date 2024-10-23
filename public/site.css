@@ -143,7 +143,8 @@ body {
 
 }
 
-.render-html,.render-code {
+.render-html,
+.render-code {
     background-color: #f9f9f9;
     padding: 1em;
     border: 1px dashed #999;
@@ -291,4 +292,9 @@ pre {
 
 .code-preview-flex pre[class*=language-] {
     margin: 0;
+}
+
+
+.markdown img {
+    max-width: 100%;
 }
