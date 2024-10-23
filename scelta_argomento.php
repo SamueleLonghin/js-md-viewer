@@ -10,7 +10,7 @@ require "head.php";
         <h1 class="text-center mb-4"><?= $config['topics'][$macroargomento]['label'] ?></h1>
         <div class="row">
             <?php foreach ($config['topics'][$macroargomento]['chapters'] as $argomentoKey => $chapter): ?>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-3 mb-4">
                     <div class="card h-100">
                         <img src="<?= $chapter['cover_image'] ?>" class="card-img-top" alt="<?= $argomentoKey ?>">
                         <div class="card-body">
