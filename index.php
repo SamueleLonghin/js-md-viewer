@@ -14,7 +14,7 @@ function loadConfig()
 
 
 // Funzione per ottenere il file markdown dal config.json
-function getMarkdownPath($config, $macroargomento, $argomento)
+function getFilePath($config, $macroargomento, $argomento)
 {
     if (isset($config['topics'][$macroargomento]['chapters'][$argomento])) {
         $fileName = $config['topics'][$macroargomento]['chapters'][$argomento]['file']; // Prendi il nome del file markdown
@@ -28,10 +28,18 @@ function getMarkdownPath($config, $macroargomento, $argomento)
 
 
 // Funzione per caricare il contenuto del file markdown
-function fetchMarkdownContent($path)
+function getMarkdownContent($path)
 {
     if (file_exists($path)) {
-        return file_get_contents($path); // Ritorna il contenuto del file markdown
+        $content = file_get_contents($path); // Ritorna il contenuto del file markdown
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        // var_dump($type);
+        // die();
+        if($type == "ipynb"){
+            require "converters.php";
+            $content = convertNotebookToMd($content);
+        }
+        return $content;
     } else {
         return 'Errore: file non trovato! (' . $path . ")";
     }
@@ -98,11 +106,11 @@ if ($macroargomento && isset($config['topics'][$macroargomento])) {
 
     if ($argomento && isset($config['topics'][$macroargomento]['chapters'][$argomento])) {
         // Ottieni il percorso del file markdown dal config.json
-        $markdownPath = getMarkdownPath($config, $macroargomento, $argomento);
+        $markdownPath = getFilePath($config, $macroargomento, $argomento);
 
         // Carica il contenuto markdown se il percorso è valido
         if ($markdownPath) {
-            $markdownContent = fetchMarkdownContent($markdownPath);
+            $markdownContent = getMarkdownContent($markdownPath);
         } else {
             $markdownContent = 'Errore: Argomento non trovato nel file di configurazione.';
         }
