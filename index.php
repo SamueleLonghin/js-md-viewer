@@ -3,7 +3,7 @@
 // Funzione per caricare il file config.json e restituire i dati
 function loadConfig()
 {
-    $configPath = 'public/topics.json'; // Assumi che il file config.json si trovi nella stessa cartella di index.php
+    $configPath = 'risorse/topics.json'; // Assumi che il file config.json si trovi nella stessa cartella di index.php
     if (file_exists($configPath)) {
         $configContent = file_get_contents($configPath);
         return json_decode($configContent, true); // Decodifica il JSON in un array PHP
