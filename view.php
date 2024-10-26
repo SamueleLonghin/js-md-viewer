@@ -15,10 +15,11 @@ global $macroargomento,$argomento,$config,$BASE_PATH,$preview,$language,$markdow
                     <div id="fileList">
                     <?php
                         if($macroargomento){
+                            $macroArgomentoLink = urlencode($macroargomento);
+
                             foreach($config['topics'][$macroargomento]['chapters'] as $label => $data){
-                                // $link = $data['file']
                                 $link = urlencode($label);
-                                echo "<a href='/$macroargomento/$link' class='text-reset file-link'> {$label} </a>";
+                                echo "<a href='/{$macroArgomentoLink}/$link' class='text-reset file-link'> {$label} </a>";
                             }
                         }
                         else{
