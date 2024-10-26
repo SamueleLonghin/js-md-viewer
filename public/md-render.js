@@ -153,10 +153,9 @@ function displayMarkdownContent(content) {
         Prism.highlightElement(block);
     });
 
-    container.querySelectorAll('code').forEach((inlineCode) => {
-        if (/^<.*>$/.test(inlineCode.textContent.trim())) {
-            inlineCode.classList.add(language); // Aggiungi la classe di linguaggio appropriata
-        }
+    // Aggiungo la classe del linguaggio di default nei blocchi di codice senza linguaggio
+    container.querySelectorAll('code.language-none').forEach((inlineCode) => {
+        inlineCode.classList.add(language); // Aggiungi la classe di linguaggio di default
         Prism.highlightElement(inlineCode);
     });
 }
