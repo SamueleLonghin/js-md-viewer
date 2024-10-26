@@ -23,6 +23,7 @@ function previewHTML(base, block) {
     // Ottengo il blocco per la preview
     previewContainer = previewCode(base);
 
+    // Inserisco il css nella pagina
     previewCSS(base,block)
 
     html = block.textContent;
@@ -36,12 +37,8 @@ function previewCSS(base, block) {
     console.log(base)
 
     // Modifica il CSS per essere applicato solo all'interno del div con classe 'preview'
-    // cssCode = block.textContent.replace(/([^{]+){/g, '.render-code $1 {');
     cssCode = block.textContent;
     // Modifica il CSS per essere applicato solo all'interno del div con classe 'preview'
-    // Evita di applicare il prefisso `.preview` a selettori globali come 'html', 'body', o 'head'
-    // cssCode = cssCode.replace(/(^|\s+)(html|body|head|@.+?)(\s*[{])/g, '$1$2$3'); // Lascia invariati questi selettori
-    // cssCode = cssCode.replace(/([^{\s]+)\s*{/g, '.render-code $1 {'); // Prefissa tutti gli altri selettori con .preview
     cssCode = cssCode.replace(/([^{\s]+)\s*{/g, '.render-code $1 {');
 
     // Crea un tag <style> per inserire il CSS modificato nella pagina
@@ -149,15 +146,14 @@ function displayMarkdownContent(content) {
             if (block.classList.contains('language-html') ) {
                 previewHTML(base, block);
             }
-            if (block.classList.contains('language-python')) {
+            else if (block.classList.contains('language-python')) {
                 previewPython(base, block);
             }
-            if (block.classList.contains('language-css')) {
+            else if (block.classList.contains('language-css')) {
                 previewCSS(base, block);
             }
         }
         Prism.highlightElement(block);
-
     });
 
     container.querySelectorAll('code').forEach((inlineCode) => {
