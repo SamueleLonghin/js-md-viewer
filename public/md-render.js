@@ -34,8 +34,6 @@ function previewHTML(base, block) {
 }
 
 function previewCSS(base, block) {
-    console.log(base)
-
     // Modifica il CSS per essere applicato solo all'interno del div con classe 'preview'
     cssCode = block.textContent;
     // Modifica il CSS per essere applicato solo all'interno del div con classe 'preview'
@@ -141,7 +139,6 @@ function displayMarkdownContent(content) {
         base = block.parentElement;
         base.classList.add("language")
 
-        console.log(block)
         if (preview) {
             if (block.classList.contains('language-html') ) {
                 previewHTML(base, block);
