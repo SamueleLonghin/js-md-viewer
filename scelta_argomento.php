@@ -5,9 +5,17 @@ global $config, $BASE_PATH, $macroargomento, $title;
 require "head.php";
 ?>
 <body>
-    <div class="container mt-5">
-        
-        <h1 class="text-center mb-4"><?= $config['topics'][$macroargomento]['label'] ?></h1>
+    
+    <header class="sticky-top bg-white pb-1 pt-2 mb-2">
+        <a href="/corsi" class=" btn btn-outline-secondary position-absolute mx-2 ">
+            <i class="bi bi-arrow-left"></i>
+            <!-- <span class="d-none d-md-inline">Torna ai Corsi</span> -->
+        </a>
+        <h1 class="text-center title-corso"><?= $config['topics'][$macroargomento]['label'] ?></h1>
+    </header>
+
+
+    <div class="container">
         <div class="row">
             <?php foreach ($config['topics'][$macroargomento]['chapters'] as $argomentoKey => $chapter): ?>
                 <div class="col-6 col-sm-4 col-lg-3 mb-4">
@@ -23,10 +31,9 @@ require "head.php";
             <?php endforeach; ?>
         </div>
     </div>
-    <!-- Aggiungi il pulsante indietro in cima alla pagina -->
-    <a href="/" class="btn btn-outline-secondary back-button mb-4">
+    <!-- <a href="/" class="btn btn-outline-secondary back-button">
         <i class="bi bi-arrow-left"></i> Torna ai Corsi
-    </a>
+    </a> -->
     <?php require "footer.php"?>
 
 </body>

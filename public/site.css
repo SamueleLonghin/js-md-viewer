@@ -274,12 +274,6 @@ pre {
     flex: 1;
 }
 
-.back-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-}
-
 .run-button {}
 
 .code-output {
@@ -297,4 +291,12 @@ pre {
 
 .markdown img {
     max-width: 100%;
+}
+
+.title-corso {
+    margin-left: -55px !important;
+    padding-left: 55px;
+    @media (max-width: 768px) {
+        margin-left: 0 !important;
+    }
 }
