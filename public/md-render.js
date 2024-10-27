@@ -158,4 +158,13 @@ function displayMarkdownContent(content) {
         inlineCode.classList.add(language); // Aggiungi la classe di linguaggio di default
         Prism.highlightElement(inlineCode);
     });
+    
+    container.querySelectorAll('table').forEach((table) => {
+        const div = document.createElement('div'); // creo il container della tabella
+        div.classList.add("table-responsive") // dico che il container può scrollare orizzontalmente
+        table.replaceWith(div) // inserisco il container al posto della tabella
+        div.appendChild(table); // inserisco la tabella dentro al container
+        table.classList.add("table","table-hover"); // Rendo carina la tabella
+    });
+
 }
