@@ -16,7 +16,7 @@ require "head.php";
                         <div class="card-body">
                             <h5 class="card-title"><?= $topic['label'] ?></h5>
                             <p class="card-text"><?= $topic['description'] ?></p>
-                            <a href="/<?=  urlencode($key) ?>" class="btn btn-primary stretched-link">Visualizza Argomenti</a>
+                            <a href="/<?=  urlencode($key) ?>" class=" stretched-link"></a>
                         </div>
                     </div>
                 </div>
