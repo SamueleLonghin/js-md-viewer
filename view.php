@@ -6,41 +6,55 @@ global $macroargomento,$argomento,$config,$BASE_PATH,$preview,$language,$markdow
 
 
     <body>
-        <div class="view-container">
+    <button id="sidebar-toggle" class="btn btn-outline-secondary"> ☰ </button>
 
-            <button id="sidebar-toggle"> ☰ </button>
-            <div id="sidebar">
-                <div class="file-section">
-                    <h2>Documenti</h2>
-                    <div id="fileList">
-                    <?php
-                        if($macroargomento){
-                            $macroArgomentoLink = urlencode($macroargomento);
+        <div class="">
 
-                            foreach($config['topics'][$macroargomento]['chapters'] as $label => $data){
-                                $link = urlencode($label);
-                                echo "<a href='/{$macroArgomentoLink}/$link' class='text-reset file-link'> {$label} </a>";
-                            }
-                        }
-                        else{
-                            foreach($config['topics'] as $topic => $val){
-                                $label = $val['label'];
-                                $link = urlencode($topic);
-                                echo "<a href='$link' class='text-reset file-link'> {$label} </a>";
-                            } 
-                        }
-                        ?>
+            <div class=" ">
+                    <div class="position-fixed overflow-x-auto p-3 overflow-y-auto" id="sidebar">
+                        <div class="flex-column flex-nowrap vh-100 ">
+                            <div class="file-section">
+
+                                <a href="/corsi" class=" btn btn-outline-secondary btn-back">
+                                    <i class="bi bi-arrow-left"></i>
+                                    <span class="">Torna ai Corsi</span>
+                                </a>
+
+                                <h2>Documenti</h2>
+                                <div id="fileList">
+                                <?php
+                                    if($macroargomento){
+                                        $macroArgomentoLink = urlencode($macroargomento);
+
+                                        foreach($config['topics'][$macroargomento]['chapters'] as $label => $data){
+                                            $link = urlencode($label);
+                                            echo "<a href='/{$macroArgomentoLink}/$link' class='text-reset file-link'> {$label} </a>";
+                                        }
+                                    }
+                                    else{
+                                        foreach($config['topics'] as $topic => $val){
+                                            $label = $val['label'];
+                                            $link = urlencode($topic);
+                                            echo "<a href='$link' class='text-reset file-link'> {$label} </a>";
+                                        } 
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="chapters-section <?= !$argomento?'d-none':'' ?>" >
+                                <h3>Capitoli</h3>
+                                <div id="chapterList"></div>
+                            </div>
+                        <!-- </div> -->
                     </div>
-                </div>
-                <div class="chapters-section <?= !$argomento?'d-none':'' ?>" >
-                    <h3>Capitoli</h3>
-                    <div id="chapterList"></div>
-                </div>
-            </div>
-            <div id="content">
-                <div id="output" class="bordered"></div>
 
-                <?php require "footer.php"?>
+
+
+                </div>
+                <div class="col" id="content">
+                    <div id="output" class="bordered"></div>
+                    <?php require "footer.php"?>
+                </div>
             </div>
         </div>
 

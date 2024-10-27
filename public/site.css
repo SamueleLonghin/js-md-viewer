@@ -1,111 +1,3 @@
-/* body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    height: 100vh;
-    margin: 0;
-}
-
-#sidebar {
-    width: 20%;
-    background: #f0f0f0;
-    padding: 1em;
-    overflow-y: auto;
-    transition: transform 0.3s ease;
-}
-
-#content {
-    flex: 1;
-    padding: 2em;
-    overflow-y: auto;
-}
-
-.markdown {
-    padding: 1em;
-    border: 1px solid #ccc;
-    margin-bottom: 2em;
-}
-
-.render-html {
-    background-color: #f9f9f9;
-    padding: 1em;
-    border: 1px dashed #999;
-}
-
-pre {
-    background: #f5f5f5;
-    padding: 1em;
-    overflow-x: auto;
-}
-
-.file-link {
-    cursor: pointer;
-    color: blue;
-    text-decoration: underline;
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-.chapter-link {
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 0.7em;
-}
-
-.chapter-link.h1 {
-    font-weight: bold;
-    margin-left: 0;
-}
-
-.chapter-link.h2 {
-    margin-left: 1em;
-}
-
-.chapter-link.h3 {
-    margin-left: 2em;
-}
-
-#sidebar-toggle {
-    display: none;
-    position: fixed;
-    top: 1em;
-    left: 1em;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 0.5em;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-
-@media (max-width: 768px) {
-    #sidebar {
-        transform: translateX(-100%);
-        position: fixed;
-        height: 100%;
-        z-index: 999;
-        width: 100%;
-    }
-
-    #sidebar.visible {
-        transform: translateX(0);
-    }
-
-    #sidebar-toggle {
-        display: block;
-    }
-
-    #content {
-        padding: 0;
-    }
-}
-
-footer{
-    text-align: center;
-} */
-
-
 /* CSS per Markdown Viewer compatibile con Bootstrap 5 */
 
 body {
@@ -114,23 +6,45 @@ body {
     margin: 0;
 }
 
-.view-container {
-    display: flex;
+#sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+    z-index: 1000;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
 }
 
 #sidebar {
-    width: 20%;
     background: #f0f0f0;
-    padding: 1em;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     transition: transform 0.3s ease;
     border-right: 1px solid #ddd;
+    width: 20%;
+
+    @media (max-width: 768px) {
+        transform: translateX(-100%);
+        position: fixed;
+        height: 100%;
+        z-index: 999;
+        width: 100%;
+    }
 }
 
 #content {
-    flex: 1;
     padding: 2em;
     overflow-y: auto;
+    float: right;
+    width: 80%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        padding: 0em;
+    }
 }
 
 .markdown {
@@ -140,7 +54,6 @@ body {
 
 .bordered {
     border: 1px solid #ccc;
-
 }
 
 .render-html,
@@ -168,12 +81,6 @@ pre {
     margin: 0.2rem;
 }
 
-/* .file-section > * > * {
-    border: 1px solid #ccc;
-    margin: 0.02rem;
-    padding: 0.01rem;
-} */
-
 .chapter-link {
     cursor: pointer;
     text-decoration: none;
@@ -194,18 +101,6 @@ pre {
     margin-left: 2em;
 }
 
-#sidebar-toggle {
-    display: none;
-    position: fixed;
-    top: 1em;
-    left: 1em;
-    background: var(--bs-primary);
-    color: white;
-    border: none;
-    padding: 0.5em;
-    cursor: pointer;
-    z-index: 1000;
-}
 
 /* Griglia per visualizzare codice e anteprima */
 .code-preview-flex {
@@ -213,6 +108,12 @@ pre {
     flex-wrap: wrap;
     gap: 1em;
     margin-bottom: 1em;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 0.5em;
+        margin-bottom: 1.5em;
+    }
 }
 
 .code-container,
@@ -224,36 +125,10 @@ pre {
     border: 1px solid #ddd;
 }
 
-/* Compatibilità con dispositivi mobili */
+/* Animazione per fare apparire la sidebar */
 @media (max-width: 768px) {
-    #sidebar {
-        transform: translateX(-100%);
-        position: fixed;
-        height: 100%;
-        z-index: 999;
-        width: 100%;
-    }
-
     #sidebar.visible {
         transform: translateX(0);
-    }
-
-    #sidebar-toggle {
-        display: block;
-    }
-
-    #content {
-        padding: 0em;
-    }
-
-    .code-preview-flex {
-        flex-direction: column;
-        gap: 0.5em;
-        margin-bottom: 1.5em;
-    }
-
-    .code-preview-flex * {
-        flex: 0;
     }
 }
 
@@ -272,6 +147,10 @@ pre {
 
 .code-preview-flex * {
     flex: 1;
+
+    @media (max-width: 768px) {
+        flex: 0;
+    }
 }
 
 .run-button {}
@@ -296,7 +175,23 @@ pre {
 .title-corso {
     margin-left: -55px !important;
     padding-left: 55px;
+
     @media (max-width: 768px) {
         margin-left: 0 !important;
     }
+}
+
+.btn-back {
+    width: 100%;
+    @media (min-width: 768px) {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.875rem !important;
+        border-radius: var(--bs-border-radius-sm) !important;
+    }
+    @media (max-width: 768px) {
+        margin-right: 50px ;
+        width: auto;
+        float: right;
+    };
+    
 }
