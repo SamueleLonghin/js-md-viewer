@@ -24,7 +24,7 @@ function previewHTML(base, block) {
     previewContainer = previewCode(base);
 
     // Inserisco il css nella pagina
-    previewCSS(base,block)
+    previewCSS(base, block)
 
     html = block.textContent;
     html = html.replace(/[^{]+\s*{[^}]*}/g, '');
@@ -127,6 +127,8 @@ function displayMarkdownContent(content) {
         header.id = encodeURIComponent(header.textContent)
         chapterLink.href = "#" + header.id;
 
+        if(toggleSidebar)
+            chapterLink.addEventListener('click', toggleSidebar, false);
 
         chapterList.appendChild(chapterLink);
     });
@@ -140,7 +142,7 @@ function displayMarkdownContent(content) {
         base.classList.add("language")
 
         if (preview) {
-            if (block.classList.contains('language-html') ) {
+            if (block.classList.contains('language-html')) {
                 previewHTML(base, block);
             }
             else if (block.classList.contains('language-python')) {
@@ -158,13 +160,12 @@ function displayMarkdownContent(content) {
         inlineCode.classList.add(language); // Aggiungi la classe di linguaggio di default
         Prism.highlightElement(inlineCode);
     });
-    
+
     container.querySelectorAll('table').forEach((table) => {
         const div = document.createElement('div'); // creo il container della tabella
         div.classList.add("table-responsive") // dico che il container può scrollare orizzontalmente
         table.replaceWith(div) // inserisco il container al posto della tabella
         div.appendChild(table); // inserisco la tabella dentro al container
-        table.classList.add("table","table-hover"); // Rendo carina la tabella
+        table.classList.add("table", "table-hover"); // Rendo carina la tabella
     });
-
 }

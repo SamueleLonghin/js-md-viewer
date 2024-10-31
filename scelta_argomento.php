@@ -1,6 +1,6 @@
 <?php
 // Rendi globali le variabili necessarie
-global $config, $BASE_PATH, $macroargomento, $title;
+global $topics, $BASE_PATH, $macroargomento, $title;
 
 require "head.php";
 ?>
@@ -10,13 +10,13 @@ require "head.php";
         <a href="/corsi" class=" btn btn-outline-secondary position-absolute ">
             <i class="bi bi-arrow-left"></i>
         </a>
-        <h1 class="text-center title-corso"><?= $config['topics'][$macroargomento]['label'] ?></h1>
+        <h1 class="text-center title-corso"><?= $topics[$macroargomento]['label'] ?></h1>
     </header>
 
 
     <div class="container">
         <div class="row">
-            <?php foreach ($config['topics'][$macroargomento]['chapters'] as $argomentoKey => $chapter): ?>
+            <?php foreach ($topics[$macroargomento]['chapters'] as $argomentoKey => $chapter): ?>
                 <div class=" col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                     <div class="card h-100">
                         <img src="<?= $chapter['cover_image'] ?>" class="card-img-top" alt="<?= $argomentoKey ?>">
