@@ -44,8 +44,6 @@ require "head.php";
                         <h3>Capitoli</h3>
                         <div id="chapterList"></div>
                     </div>
-                    
-                    <button id="theme-toggle" class="btn btn-secondary">Tema scuro</button>
                 </div>
 
 

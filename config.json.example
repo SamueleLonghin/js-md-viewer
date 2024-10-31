@@ -1,6 +1,5 @@
 {
     "resources-folder": "./risorse/",
-    "remote-resources-folder": "/js-md-viewer/risorse/",
     "base-path": "/js-md-viewer//",
     "title": "Dispensa del professor Longhin"
 }
