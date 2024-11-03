@@ -41,6 +41,9 @@ if ($macroargomento && isset($topics[$macroargomento])) {
         // Ottieni il percorso del file markdown dal topics.json
         $fileFolderAndName = getFileFolderAndName($topics, $resourcesFolder, $macroargomento, $argomento);
 
+        $preview = valOrDefault($topics[$macroargomento]['chapters'][$argomento], "preview", $preview);
+        $language = valOrDefault( $topics[$macroargomento]['chapters'][$argomento], "language", $language);
+
         // Carica il contenuto markdown se il percorso è valido
         if ($fileFolderAndName) {
             $markdownPath = implode("/", $fileFolderAndName);
