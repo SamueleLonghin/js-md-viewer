@@ -37,12 +37,12 @@ if ($macroargomento && isset($topics[$macroargomento])) {
         $topicFolder = $resourcesFolder . $topics[$macroargomento]['folder'];
         $topics[$macroargomento]['chapters'] = loadChapters($topicFolder);
     }
-    if ($argomento && ($topics[$macroargomento]['chapters'][$argomento])) {
+    if ($argomento && isset($topics[$macroargomento]['chapters'][$argomento]) && (!isset($topics[$macroargomento]['chapters'][$argomento]['visibility']) || $topics[$macroargomento]['chapters'][$argomento]['visibility'] != 'none')) {
         // Ottieni il percorso del file markdown dal topics.json
         $fileFolderAndName = getFileFolderAndName($topics, $resourcesFolder, $macroargomento, $argomento);
 
         $preview = valOrDefault($topics[$macroargomento]['chapters'][$argomento], "preview", $preview);
-        $language = valOrDefault( $topics[$macroargomento]['chapters'][$argomento], "language", $language);
+        $language = valOrDefault($topics[$macroargomento]['chapters'][$argomento], "language", $language);
 
         // Carica il contenuto markdown se il percorso è valido
         if ($fileFolderAndName) {

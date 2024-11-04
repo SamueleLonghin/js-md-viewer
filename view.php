@@ -27,8 +27,10 @@ require "head.php";
                                 $macroArgomentoLink = urlencode($macroargomento);
 
                                 foreach ($topics[$macroargomento]['chapters'] as $label => $data) {
-                                    $link = urlencode($label);
-                                    echo "<a href='/{$macroArgomentoLink}/$link' class='text-reset file-link'> {$label} </a>";
+                                    if (!isset($data['visibility']) || $data['visibility'] == 'visible') {
+                                        $link = urlencode($label);
+                                        echo "<a href='/{$macroArgomentoLink}/$link' class='text-reset file-link'> {$label} </a>";
+                                    }
                                 }
                             } else {
                                 foreach ($topics as $topic => $val) {
