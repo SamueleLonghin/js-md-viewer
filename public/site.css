@@ -47,6 +47,8 @@ body {
     }
 }
 
+
+
 .markdown {
     padding: 1em;
     margin-bottom: 2em;
@@ -179,15 +181,37 @@ pre {
 
 .btn-back {
     width: 100%;
+
     @media (min-width: 768px) {
         padding: 0.25rem 0.5rem !important;
         font-size: 0.875rem !important;
         border-radius: var(--bs-border-radius-sm) !important;
     }
+
     @media (max-width: 768px) {
-        margin-right: 50px ;
+        margin-right: 50px;
         width: auto;
         float: right;
-    };
-    
+    }
+
+    ;
+
+}
+
+
+
+/* Stile per la stampa */
+@media print {
+    body {
+        visibility: hidden;
+    }
+
+    #output {
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: 0;
+    }
 }
