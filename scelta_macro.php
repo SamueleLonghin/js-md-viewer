@@ -12,7 +12,7 @@ require "head.php";
             <?php foreach ($topics as $key => $topic): ?>
                 <div class="col-6 col-sm-4 col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="<?= addLinks($chapter['cover_image'], $BASE_PATH . $resourcesFolder . $topic['folder'] ?: "") ?>"
+                        <img src="<?= addLinks($topic['cover_image'], $BASE_PATH . $resourcesFolder . $topic['folder'] ?: "") ?>"
                             class="card-img-top" alt="<?= $topic['label'] ?>">
                         <!-- <img src="<?= $topic['cover_image'] ?>" class="card-img-top" alt="<?= $topic['label'] ?>"> -->
                         <div class="card-body">
