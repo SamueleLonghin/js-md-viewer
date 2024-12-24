@@ -215,3 +215,24 @@ pre {
         border: 0;
     }
 }
+
+
+ex {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    margin: 0.2em;
+    display: inline-block;
+}
+
+ex::before {
+    content: "Esempio";
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+ul + ex {
+    margin-top: -1rem;
+    margin-left: var(--bs-list-group-item-padding-x, 2rem);
+}
