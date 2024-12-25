@@ -232,7 +232,29 @@ ex::before {
     margin-bottom: 0.5em;
 }
 
-ul + ex {
+ul + ex:has(+ul), li + ex:has(+li) {
+    margin-top: -1rem;
+    margin-left: var(--bs-list-group-item-padding-x, 2rem);
+}
+
+
+
+im {
+    background-color: floralwhite;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    margin: 0.2em;
+    display: inline-block;
+}
+
+im::before {
+    content: "Importante";
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+ul + im:has(+ul), li + im:has(+li) {
     margin-top: -1rem;
     margin-left: var(--bs-list-group-item-padding-x, 2rem);
 }
