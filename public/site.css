@@ -245,7 +245,7 @@ li+im:has(+li) {
 
 /* se è all'interno di un elenco puntato non serve spostarlo a destra ma devo solamente rimuovere il margine sopra */
 li>ex,
-i>im {
+li>im {
     margin-top: -1rem;
 }
 
