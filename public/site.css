@@ -223,6 +223,7 @@ im {
     padding: 0.5em;
     margin: 0.2em;
     display: inline-block;
+    width: 100%;
 }
 
 /* definisco i contenuti all'interno dei tag particolari */
