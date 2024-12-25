@@ -216,45 +216,55 @@ pre {
     }
 }
 
+/* creo i tag particolari */
+ex,
+im {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    margin: 0.2em;
+    display: inline-block;
+}
 
+/* definisco i contenuti all'interno dei tag particolari */
+ex::before,
+im::before {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+
+/* Imposto che se è preceduto e successo da un punto di un elenco puntato deve essere spostato a dx */
+ul+ex:has(+ul),
+li+ex:has(+li),
+ul+im:has(+ul),
+li+im:has(+li) {
+    margin-top: -1rem;
+    margin-left: var(--bs-list-group-item-padding-x, 2rem);
+}
+
+/* se è all'interno di un elenco puntato non serve spostarlo a destra ma devo solamente rimuovere il margine sopra */
+li>ex,
+i>im {
+    margin-top: -1rem;
+}
+
+/* definisco il tag ex per gli Esempi */
 ex {
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 0.5em;
-    margin: 0.2em;
-    display: inline-block;
 }
 
+/* contenuto del blocco */
 ex::before {
     content: "Esempio";
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5em;
 }
 
-ul + ex:has(+ul), li + ex:has(+li) {
-    margin-top: -1rem;
-    margin-left: var(--bs-list-group-item-padding-x, 2rem);
-}
-
-
-
+/* definisco il tag im per le cose importanti */
 im {
     background-color: floralwhite;
-    border: 1px solid #ddd;
-    padding: 0.5em;
-    margin: 0.2em;
-    display: inline-block;
 }
 
+/* contenuto del blocco */
 im::before {
     content: "Importante";
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-ul + im:has(+ul), li + im:has(+li) {
-    margin-top: -1rem;
-    margin-left: var(--bs-list-group-item-padding-x, 2rem);
 }
