@@ -269,3 +269,7 @@ im {
 im::before {
     content: "Importante";
 }
+
+li > p:only-child {
+    margin-bottom: 0;
+}
