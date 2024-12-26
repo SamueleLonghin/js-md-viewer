@@ -15,6 +15,6 @@ if (lessonToggler) {
     const body = document.getElementsByTagName('body');
 
     lessonToggler.addEventListener('click', () => {
-        body.classList.toggle('lesson-view');
+        body.classList.toggle('lesson-mode-view');
     });
 }

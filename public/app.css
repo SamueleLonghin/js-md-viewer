@@ -141,7 +141,8 @@ body.lesson-mode-view #sidebar-toggle {
     }
 }
 
-.btn-back {
+
+body.classic-mode-view .btn-back {
     /* versione base (schermo grande e non lesson) */
     @media (min-width: 769px) {
         width: 100%;
@@ -160,14 +161,6 @@ body.lesson-mode-view #sidebar-toggle {
 
 
 /* versione lesson, resetto il css che ho cambiato prima */
-.lesson-mode-view .btn-back {
-    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x) !important;;
-    font-size: var(--bs-btn-font-size) !important;;
-    border-radius: var(--bs-btn-border-radius) !important;;
-}
-
-
-
 body.lesson-mode-view .btn-back {
     margin-right: 50px;
     width: auto;
