@@ -270,6 +270,24 @@ im::before {
     content: "Importante";
 }
 
-li > p:only-child {
+li>p:only-child {
     margin-bottom: 0;
+}
+
+#cookie-consent-banner {
+    display: none;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    z-index: 10000;
+}
+
+#cookie-consent-banner button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
 }

@@ -1,3 +1,19 @@
+<?php
+global $ANALYTICS_ID, $BASE_PATH;
+
+if ($ANALYTICS_ID) { ?>
+    <div id='cookie-consent-banner'>
+        Questo sito utilizza cookie per raccogliere dati statistici.
+        <button id='accept-cookies'>Accetta</button>
+    </div>
+
+    <script>
+        window.GA_MEASUREMENT_ID = <?= json_encode($ANALYTICS_ID) ?>
+    </script>
+    <script src='<?= $BASE_PATH ?>public/analytics.js'></script>
+<?php }
+
+?>
 <footer class="text-center sticky-bottom bg-white pt-1">
     <h2>Credits</h2>
     <p>Creato da Samuele Longhin</p>

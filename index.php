@@ -11,6 +11,9 @@ if (!$config) {
 // Path nella quale è posizionato il servizio (nel caso vengano utilizzati .htaccess per redirect può tornare utile)
 $BASE_PATH = valOrDefault($config, "base-path", '/');
 
+// Id google analytics
+$ANALYTICS_ID = valOrDefault($config, "analytics-id");
+
 // Path nella quale sono posizionati i file md da visualizzare
 $resourcesFolder = valOrDefault($config, "resources-folder", '/risorse');
 
@@ -27,8 +30,6 @@ $language = valOrDefault($config, "language");
 // Dizionario contenente i corsi
 // $topics = valOrDefault($config, "topics", []);
 $topics = loadTopics($resourcesFolder);
-
-load_analytics($config);
 
 if ($macroargomento && isset($topics[$macroargomento])) {
 

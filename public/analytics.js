@@ -24,28 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Funzione per mostrare il banner di consenso
     function showConsentBanner() {
-        const banner = document.createElement("div");
-        banner.id = "cookie-consent-banner";
-        banner.style.position = "fixed";
-        banner.style.bottom = "0";
-        banner.style.width = "100%";
-        banner.style.backgroundColor = "#000";
-        banner.style.color = "#fff";
-        banner.style.padding = "10px";
-        banner.style.textAlign = "center";
-        banner.style.zIndex = "1000";
-        banner.innerHTML = `
-            Questo sito utilizza cookie per raccogliere dati statistici. 
-            <button id="accept-cookies" style="margin-left: 10px; padding: 5px 10px; cursor: pointer;">
-                Accetta
-            </button>
-        `;
-        document.body.appendChild(banner);
+        const banner = document.getElementById("cookie-consent-banner");
+        banner.style.display = "block";
 
         document.getElementById("accept-cookies").addEventListener("click", function () {
             setCookieConsent();
-            document.body.removeChild(banner);
-            enableAnalytics();
+            // banner.style.display = "none";
+            // enableAnalytics();
+            location.reload();
         });
     }
 
@@ -73,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (hasCookieConsent()) {
         enableAnalytics();
     } else {
+        console.log("Cookie consent non ancora dato.");
+        console.log(this.cookie);
         showConsentBanner();
     }
 });

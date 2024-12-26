@@ -61,17 +61,19 @@ require "head.php";
 
     <script src="<?= $BASE_PATH ?>public/sidebar.js"></script>
     <script src="<?= $BASE_PATH ?>public/md-render.js"></script>
-    <script src="<?= $BASE_PATH ?>public/analytics.js"></script>
 
     <div id="raw-content" class="d-none"><?= $markdownContent ?></div>
 
-    <script>
-        preview = <?= json_encode($preview) ?>;
-        language = <?= json_encode($language) ?>;
-        content = <?= json_encode( $markdownContent) ?>;
+    <?php if (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted') {
+        ?>
+        <script>
+            preview = <?= json_encode($preview) ?>;
+            language = <?= json_encode($language) ?>;
+            content = <?= json_encode($markdownContent) ?>;
 
-        displayMarkdownContent(content)
-    </script>
+            displayMarkdownContent(content)
+        </script>
+    <?php } ?>
 </body>
 
 </html>
