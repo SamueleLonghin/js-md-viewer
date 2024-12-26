@@ -276,18 +276,64 @@ li>p:only-child {
 
 #cookie-consent-banner {
     display: none;
-    position: relative;
+    position: fixed;
     bottom: 0;
-    width: 100%;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 10px;
-    text-align: center;
     z-index: 10000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
 }
 
-#cookie-consent-banner button {
+#content #cookie-consent-banner {
+    visibility: hidden;
+}
+
+.cookie-consent-container {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    align-items: center;
+}
+
+.placeholder-cookie-request .cookie-consent-container {
+    flex-direction: column;
+}
+
+.cookie-consent-container button {
     margin-left: 10px;
-    padding: 5px 10px;
+    padding: 10px 20px;
     cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#cookie-consent-banner button:hover {
+    background-color: #45a049;
+}
+
+.placeholder-content-loading,
+.placeholder-cookie-request {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder-content-loading::after,
+.placeholder-cookie-request::after {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.placeholder-content-loading::after {
+    content: "La risorsa che hai richiesto è in caricamento...";
 }

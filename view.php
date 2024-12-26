@@ -2,6 +2,7 @@
 global $macroargomento, $argomento, $topics, $BASE_PATH, $preview, $language, $markdownContent;
 
 require "head.php";
+$cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted';
 ?>
 
 
@@ -50,7 +51,25 @@ require "head.php";
 
         </div>
         <div class="col" id="content">
-            <div id="output" class="bordered"></div>
+            <div id="output" class="bordered">
+                <?php
+                if ($cookieConsent) {
+                    ?>
+                    <div class="placeholder-content-loading"></div>
+                <?php } else { ?>
+                    <div class="placeholder-cookie-request">
+                        <div class='cookie-consent-container'>
+                            <p>
+                                Questo sito utilizza cookie per raccogliere dati statistici.
+                            </p>
+                            <p>
+                                Accetta il trattamento dei dati per visualizzare il contenuto.
+                            </p>
+                            <button id='accept-cookies'>Accetta</button>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
             <?php require "footer.php" ?>
         </div>
     </div>
@@ -64,7 +83,7 @@ require "head.php";
 
     <div id="raw-content" class="d-none"><?= $markdownContent ?></div>
 
-    <?php if (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted') {
+    <?php if ($cookieConsent) {
         ?>
         <script>
             preview = <?= json_encode($preview) ?>;

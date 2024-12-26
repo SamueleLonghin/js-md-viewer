@@ -2,7 +2,7 @@
 global $ANALYTICS_ID, $BASE_PATH;
 
 if ($ANALYTICS_ID) { ?>
-    <div id='cookie-consent-banner'>
+    <div class="cookie-consent-container" id='cookie-consent-banner'>
         Questo sito utilizza cookie per raccogliere dati statistici.
         <button id='accept-cookies'>Accetta</button>
     </div>
