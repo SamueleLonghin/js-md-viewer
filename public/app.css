@@ -46,6 +46,37 @@ body {
     }
 }
 
+body.lesson-mode-view #sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    height: 100%;
+    z-index: 999;
+    width: 100%;
+}
+
+body.lesson-mode-view #sidebar.visible {
+    transform: translateX(-0%);
+}
+
+body.lesson-mode-view #content {
+    width: 100%;
+    padding: 0em;
+}
+
+body.lesson-mode-view .code-preview-flex {
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+body.lesson-mode-view .code-preview-flex * {
+    flex: 0;
+}
+
+body.lesson-mode-view #sidebar-toggle {
+    display: block;
+}
+
 .markdown {
     padding: 1em;
     margin-bottom: 2em;
@@ -111,14 +142,15 @@ body {
 }
 
 .btn-back {
-    width: 100%;
-
-    @media (min-width: 768px) {
+    /* versione base (schermo grande e non lesson) */
+    @media (min-width: 769px) {
+        width: 100%;
         padding: 0.25rem 0.5rem !important;
         font-size: 0.875rem !important;
         border-radius: var(--bs-border-radius-sm) !important;
     }
 
+    /* Versione schermo piccolo */
     @media (max-width: 768px) {
         margin-right: 50px;
         width: auto;
@@ -126,6 +158,21 @@ body {
     }
 }
 
+
+/* versione lesson, resetto il css che ho cambiato prima */
+.lesson-mode-view .btn-back {
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x) !important;;
+    font-size: var(--bs-btn-font-size) !important;;
+    border-radius: var(--bs-btn-border-radius) !important;;
+}
+
+
+
+body.lesson-mode-view .btn-back {
+    margin-right: 50px;
+    width: auto;
+    float: right;
+}
 
 
 #cookie-consent-banner {
