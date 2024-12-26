@@ -21,7 +21,6 @@ body {
 
 #sidebar {
     background: #f0f0f0;
-    /* overflow-y: auto; */
     transition: transform 0.3s ease;
     border-right: 1px solid #ddd;
     width: 20%;
@@ -47,8 +46,6 @@ body {
     }
 }
 
-
-
 .markdown {
     padding: 1em;
     margin-bottom: 2em;
@@ -58,18 +55,6 @@ body {
     border: 1px solid #ccc;
 }
 
-.render-html,
-.render-code {
-    background-color: #f9f9f9;
-    padding: 1em;
-    border: 1px dashed #999;
-}
-
-pre {
-    background: #f5f5f5;
-    padding: 1em;
-    overflow-x: auto;
-}
 
 .file-link {
     cursor: pointer;
@@ -101,38 +86,12 @@ pre {
     margin-left: 2em;
 }
 
-
-/* Griglia per visualizzare codice e anteprima */
-.code-preview-flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    margin-bottom: 1em;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 0.5em;
-        margin-bottom: 1.5em;
-    }
-}
-
-.code-container,
-.render-html,
-.render-code {
-    flex: 1;
-    min-width: 300px;
-    padding: 1em;
-    border: 1px solid #ddd;
-}
-
-/* Animazione per fare apparire la sidebar */
 @media (max-width: 768px) {
     #sidebar.visible {
         transform: translateX(0);
     }
 }
 
-/* Bootstrap Utility Classes */
 .file-link:hover {
     color: var(--bs-primary-dark);
 }
@@ -141,34 +100,6 @@ pre {
     color: var(--bs-secondary);
 }
 
-.language {
-    max-width: 100%;
-}
-
-.code-preview-flex * {
-    flex: 1;
-
-    @media (max-width: 768px) {
-        flex: 0;
-    }
-}
-
-.code-output {
-    white-space: pre-line;
-    margin-top: 10px;
-    border: 1px solid rgb(204, 204, 204);
-    padding: 10px;
-    background-color: rgb(249, 249, 249);
-}
-
-.code-preview-flex pre[class*=language-] {
-    margin: 0;
-}
-
-
-.markdown img {
-    max-width: 100%;
-}
 
 .title-corso {
     margin-left: -55px !important;
@@ -193,86 +124,9 @@ pre {
         width: auto;
         float: right;
     }
-
-    ;
-
 }
 
 
-
-/* Stile per la stampa */
-@media print {
-    body {
-        visibility: hidden;
-    }
-
-    #output {
-        visibility: visible;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        border: 0;
-    }
-}
-
-/* creo i tag particolari */
-ex,
-im {
-    border: 1px solid #ddd;
-    padding: 0.5em;
-    margin: 0.2em;
-    display: inline-block;
-    width: 100%;
-}
-
-/* definisco i contenuti all'interno dei tag particolari */
-ex::before,
-im::before {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-
-/* Imposto che se è preceduto e successo da un punto di un elenco puntato deve essere spostato a dx */
-ul+ex:has(+ul),
-li+ex:has(+li),
-ul+im:has(+ul),
-li+im:has(+li) {
-    margin-top: -1rem;
-    margin-left: var(--bs-list-group-item-padding-x, 2rem);
-}
-
-/* se è all'interno di un elenco puntato non serve spostarlo a destra ma devo solamente rimuovere il margine sopra */
-li>ex,
-li>im {
-    margin-top: -1rem;
-}
-
-/* definisco il tag ex per gli Esempi */
-ex {
-    background-color: #f9f9f9;
-}
-
-/* contenuto del blocco */
-ex::before {
-    content: "Esempio";
-}
-
-/* definisco il tag im per le cose importanti */
-im {
-    background-color: floralwhite;
-}
-
-/* contenuto del blocco */
-im::before {
-    content: "Importante";
-}
-
-li>p:only-child {
-    margin-bottom: 0;
-}
 
 #cookie-consent-banner {
     display: none;
@@ -291,7 +145,6 @@ li>p:only-child {
 .cookie-consent-container {
     display: flex;
     justify-content: center;
-
     width: 100%;
     padding: 20px;
     text-align: center;
