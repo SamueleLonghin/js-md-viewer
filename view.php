@@ -61,11 +61,14 @@ require "head.php";
 
     <script src="<?= $BASE_PATH ?>public/sidebar.js"></script>
     <script src="<?= $BASE_PATH ?>public/md-render.js"></script>
+    <script src="<?= $BASE_PATH ?>public/analytics.js"></script>
+
+    <div id="raw-content" class="d-none"><?= $markdownContent ?></div>
 
     <script>
         preview = <?= json_encode($preview) ?>;
         language = <?= json_encode($language) ?>;
-        content = <?= json_encode($markdownContent) ?>
+        content = <?= json_encode( $markdownContent) ?>;
 
         displayMarkdownContent(content)
     </script>
