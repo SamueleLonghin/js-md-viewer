@@ -28,6 +28,8 @@ $language = valOrDefault($config, "language");
 // $topics = valOrDefault($config, "topics", []);
 $topics = loadTopics($resourcesFolder);
 
+load_analytics($config);
+
 if ($macroargomento && isset($topics[$macroargomento])) {
 
     $preview = valOrDefault($topics[$macroargomento], "preview", $preview);

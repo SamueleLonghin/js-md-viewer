@@ -91,3 +91,12 @@ function valOrDefault($dict, $key, $default = null)
 {
     return isset($dict[$key]) ? $dict[$key] : $default;
 }
+
+
+function load_analytics($config)
+{
+    $analyticsID = valOrDefault($config, "analytics-id");
+    if ($analyticsID) {
+        echo "<script>window.GA_MEASUREMENT_ID = " . json_encode($analyticsID) . ";</script>";
+    }
+}
