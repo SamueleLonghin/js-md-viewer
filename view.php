@@ -66,6 +66,7 @@ $cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent']
                                 Accetta il trattamento dei dati per visualizzare il contenuto.
                             </p>
                             <button id='accept-cookies'>Accetta</button>
+                            <a href="<?= $BASE_PATH ?>public/privacy-policy.html" style="margin-left: 10px;">Privacy Policy</a>
                         </div>
                     </div>
                 <?php } ?>

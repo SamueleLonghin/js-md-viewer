@@ -5,6 +5,7 @@ if ($ANALYTICS_ID) { ?>
     <div class="cookie-consent-container" id='cookie-consent-banner'>
         Questo sito utilizza cookie per raccogliere dati statistici.
         <button id='accept-cookies'>Accetta</button>
+        <a href="<?= $BASE_PATH ?>public/privacy-policy.html" >Privacy Policy</a>
     </div>
 
     <script>
