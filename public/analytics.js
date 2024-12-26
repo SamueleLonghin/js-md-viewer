@@ -29,8 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById("accept-cookies").addEventListener("click", function () {
             setCookieConsent();
-            // banner.style.display = "none";
-            // enableAnalytics();
             location.reload();
         });
     }
