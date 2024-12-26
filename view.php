@@ -3,10 +3,11 @@ global $macroargomento, $argomento, $topics, $BASE_PATH, $preview, $language, $m
 
 require "head.php";
 $cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted';
+$isLessonMode = isset($_GET['lesson']);
 ?>
 
 
-<body>
+<body class="<?= $isLessonMode ? 'lesson-mode-view' : 'classic-mode-view' ?>">
     <button id="sidebar-toggle" class="btn btn-outline-secondary"> ☰ </button>
 
     <div>
@@ -50,11 +51,10 @@ $cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent']
 
 
         </div>
-        <div class="col" id="content">
+        <div id="content">
             <div id="output" class="bordered">
                 <?php
-                if ($cookieConsent) {
-                    ?>
+                if ($cookieConsent) { ?>
                     <div class="placeholder-content-loading"></div>
                 <?php } else { ?>
                     <div class="placeholder-cookie-request">
@@ -66,7 +66,8 @@ $cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent']
                                 Accetta il trattamento dei dati per visualizzare il contenuto.
                             </p>
                             <button id='accept-cookies'>Accetta</button>
-                            <a href="<?= $BASE_PATH ?>public/privacy-policy.html" style="margin-left: 10px;">Privacy Policy</a>
+                            <a href="<?= $BASE_PATH ?>public/privacy-policy.html" style="margin-left: 10px;">Privacy
+                                Policy</a>
                         </div>
                     </div>
                 <?php } ?>
