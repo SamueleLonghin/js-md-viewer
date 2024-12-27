@@ -129,25 +129,32 @@ p {
     display: inline-block;
 }
 
+@media (min-width: 768px) {
+
+    p:has(+ rt),
+    lf,
+    rt {
+        width: 50%;
+        /* display: inline-block; */
+        float: left;
+
+        display: inline-flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    lf img,
+    rt img {
+        max-width: 100%;
+        vertical-align: center;
+    }
 
 
-
-p:has(+ lf),
-rt,
-lf {
-    width: 50%;
-    display: inline-block;
-    float: left;
-}
-
-lf img,
-rt img {
-    max-width: 100%;
-    vertical-align: center;
-}
-
-
-lf+* {
-    clear: both;
-    /* Garantisce che inizi su una nuova riga */
+    rt+* {
+        clear: both;
+        /* Garantisce che inizi su una nuova riga */
+    }
 }
