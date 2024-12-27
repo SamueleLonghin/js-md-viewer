@@ -31,7 +31,7 @@ $language = valOrDefault($config, "language");
 // $topics = valOrDefault($config, "topics", []);
 $topics = loadTopics($resourcesFolder);
 
-if ($macroargomento && isset($topics[$macroargomento])) {
+if ($macroargomento && isset($topics[$macroargomento]) && (!isset($topics[$macroargomento]['visibility']) || $topics[$macroargomento]['visibility'] != 'none')) {
 
     $preview = valOrDefault($topics[$macroargomento], "preview", $preview);
     $language = valOrDefault($topics[$macroargomento], "language", $language);
