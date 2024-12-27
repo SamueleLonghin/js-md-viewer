@@ -168,6 +168,19 @@ function displayMarkdownContent(content) {
         chapterList.appendChild(chapterLink);
     });
 
+    container.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((header, index) => {
+        // Aggiungi l'icona di copia
+        const copyIcon = document.createElement('span');
+        copyIcon.classList.add('chapter-link-copy', "bi", "bi-link-45deg");
+        copyIcon.innerHTML = ' '; // Puoi sostituire con un'icona diversa se preferisci
+        copyIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(window.location.href.split('#')[0] + '#' + header.id);
+        });
+
+        header.appendChild(copyIcon);
+    });
+
     // Evidenziazione dei blocchi di codice
     output.appendChild(container);
     container.querySelectorAll('pre code').forEach((block) => {

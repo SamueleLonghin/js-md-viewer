@@ -117,6 +117,23 @@ body.lesson-mode-view #sidebar-toggle {
     margin-left: 2em;
 }
 
+.chapter-link-copy {
+    visibility: hidden;
+    margin-left: 0.5em; 
+    cursor: pointer;
+    font-size: 0.8em;
+    color: var(--bs-secondary);
+}
+
+h1:hover .chapter-link-copy,
+h2:hover .chapter-link-copy,
+h3:hover .chapter-link-copy,
+h4:hover .chapter-link-copy,
+h5:hover .chapter-link-copy,
+h6:hover .chapter-link-copy {
+    visibility: visible;
+}
+
 @media (max-width: 768px) {
     #sidebar.visible {
         transform: translateX(0);
