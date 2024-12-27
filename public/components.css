@@ -63,7 +63,8 @@ pre {
 }
 
 ex,
-im,ac {
+im,
+ac {
     border: 1px solid #ddd;
     padding: 0.5em;
     margin: 0.2em 0;
@@ -121,4 +122,32 @@ ac::before {
 
 li>p:only-child {
     margin-bottom: 0;
+}
+
+
+p {
+    display: inline-block;
+}
+
+
+
+
+p:has(+ lf),
+rt,
+lf {
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+
+lf img,
+rt img {
+    max-width: 100%;
+    vertical-align: center;
+}
+
+
+lf+* {
+    clear: both;
+    /* Garantisce che inizi su una nuova riga */
 }
