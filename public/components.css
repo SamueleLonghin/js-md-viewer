@@ -125,10 +125,6 @@ li>p:only-child {
 }
 
 
-p {
-    display: inline-block;
-}
-
 @media (min-width: 768px) {
 
     p:has(+ rt),
