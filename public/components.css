@@ -63,7 +63,7 @@ pre {
 }
 
 ex,
-im {
+im,ac {
     border: 1px solid #ddd;
     padding: 0.5em;
     margin: 0.2em;
@@ -72,7 +72,8 @@ im {
 }
 
 ex::before,
-im::before {
+im::before,
+ac::before {
     font-weight: bold;
     display: block;
     margin-bottom: 0.5em;
@@ -81,12 +82,15 @@ im::before {
 ul+ex:has(+ul),
 li+ex:has(+li),
 ul+im:has(+ul),
-li+im:has(+li) {
+ul+im:has(+ul),
+ul+ac:has(+ul),
+li+ac:has(+li) {
     margin-top: -1rem;
     margin-left: var(--bs-list-group-item-padding-x, 2rem);
 }
 
 li>ex,
+li>ac,
 li>im {
     margin-top: -1rem;
 }
@@ -105,6 +109,14 @@ im {
 
 im::before {
     content: "Importante";
+}
+
+ac {
+    background-color: mintcream;
+}
+
+ac::before {
+    content: "Attività Guidata";
 }
 
 li>p:only-child {
