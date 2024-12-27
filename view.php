@@ -78,6 +78,8 @@ $isLessonMode = isset($_GET['lesson']);
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/14.1.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css">
     <script src="<?= $BASE_PATH ?>public/prism.js"></script>
 
     <script src="<?= $BASE_PATH ?>public/sidebar.js"></script>

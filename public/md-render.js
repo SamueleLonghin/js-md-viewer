@@ -106,6 +106,41 @@ function previewPython(preElement, codeElement) {
     previewContainer.append(runButton, outputDiv);
 }
 
+function renderMathInElement(element) {
+    if (typeof katex !== 'undefined') {
+        const text = element.innerHTML;
+        const inlineRegex = /\$(.*?)\$/g;
+        const blockRegex = /\$\$(.*?)\$\$/gs;
+
+        // Prima sostituisci i blocchi LaTeX
+        const renderedText = text.replace(blockRegex, (match, p1) => {
+            try {
+                return `<div class="katex-block">${katex.renderToString(p1, {
+                    throwOnError: false,
+                    displayMode: true
+                })}</div>`;
+            } catch (e) {
+                console.error('Errore nel rendering di KaTeX:', e);
+                return match;
+            }
+        });
+
+        // Poi sostituisci i LaTeX inline
+        const finalText = renderedText.replace(inlineRegex, (match, p1) => {
+            try {
+                return katex.renderToString(p1, {
+                    throwOnError: false
+                });
+            } catch (e) {
+                console.error('Errore nel rendering di KaTeX:', e);
+                return match;
+            }
+        });
+
+        element.innerHTML = finalText;
+    }
+}
+
 // Funzione per visualizzare il contenuto Markdown
 function displayMarkdownContent(content) {
     const output = document.getElementById('output');
@@ -127,7 +162,7 @@ function displayMarkdownContent(content) {
         header.id = encodeURIComponent(header.textContent)
         chapterLink.href = "#" + header.id;
 
-        if(toggleSidebar)
+        if (toggleSidebar)
             chapterLink.addEventListener('click', toggleSidebar, false);
 
         chapterList.appendChild(chapterLink);
@@ -155,6 +190,8 @@ function displayMarkdownContent(content) {
         Prism.highlightElement(block);
     });
 
+
+
     // Aggiungo la classe del linguaggio di default nei blocchi di codice senza linguaggio
     container.querySelectorAll('code.language-none').forEach((inlineCode) => {
         inlineCode.classList.add(language); // Aggiungi la classe di linguaggio di default
@@ -167,5 +204,14 @@ function displayMarkdownContent(content) {
         table.replaceWith(div) // inserisco il container al posto della tabella
         div.appendChild(table); // inserisco la tabella dentro al container
         table.classList.add("table", "table-hover"); // Rendo carina la tabella
+    });
+
+
+    // Aggiungi il supporto per il rendering del codice LaTeX
+    container.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6').forEach((element) => {
+        if (element.textContent.includes('$')) {
+            console.log("Avrei trovato: ", element)
+            renderMathInElement(element);
+        }
     });
 }
