@@ -90,11 +90,27 @@ li+ac:has(+li) {
     margin-left: var(--bs-list-group-item-padding-x, 2rem);
 }
 
-li>ex,
+/* li>ex,
 li>ac,
 li>im {
     margin-top: -1rem;
+} */
+
+
+/* Gesione del caso in cui ci sia un list item con un paragrafo e un esempio */
+
+li p+ex,
+li p+ac,
+li p+im {
+    margin-top: -1rem;
 }
+
+/* A volte se ho degli elenchi dentro ad altri elenchi mette il titolo del primo 
+livello dentro ad un tag <p> che per natura ha il margine sotto e quindi il risultato ha uno spazio inutile*/
+p:has(+ul), p:has(+ol){
+    margin-bottom: 0;
+}
+
 
 ex {
     background-color: #f9f9f9;
