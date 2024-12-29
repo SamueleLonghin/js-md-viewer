@@ -141,6 +141,13 @@ li>p:only-child {
 }
 
 
+/* Rimozione del margine sotto al paragrafo se ultimo elemento del tag particolare */
+ex>p:last-child,
+im>p:last-child,
+ac>p:last-child {
+    margin-bottom: 0;
+}
+
 @media (min-width: 768px) {
 
     p:has(+ rt),
@@ -155,7 +162,7 @@ li>p:only-child {
     rt {
         display: inline-flex;
         align-content: center;
-        justify-content: center;
+        /* justify-content: center; */
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
