@@ -107,7 +107,8 @@ li p+im {
 
 /* A volte se ho degli elenchi dentro ad altri elenchi mette il titolo del primo 
 livello dentro ad un tag <p> che per natura ha il margine sotto e quindi il risultato ha uno spazio inutile*/
-p:has(+ul), p:has(+ol){
+p:has(+ul),
+p:has(+ol) {
     margin-bottom: 0;
 }
 
@@ -147,6 +148,30 @@ im>p:last-child,
 ac>p:last-child {
     margin-bottom: 0;
 }
+
+
+
+/* Gestione migliorata degli elenchi puntati */
+p+ex,
+p+im,
+p+ac {
+    margin-top: -.8rem;
+    margin-bottom: 1rem;
+}
+
+li p+ex,
+li p+im,
+li p+ac {
+    margin-bottom: 0.5rem;
+}
+
+ul li:last-child ex {
+    margin-bottom: 0;
+
+}
+
+
+
 
 @media (min-width: 768px) {
 
