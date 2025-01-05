@@ -221,7 +221,7 @@ function displayMarkdownContent(content) {
 
 
     // Aggiungi il supporto per il rendering del codice LaTeX
-    container.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6').forEach((element) => {
+    container.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, li').forEach((element) => {
         if (element.textContent.includes('$')) {
             console.log("Avrei trovato: ", element)
             renderMathInElement(element);
