@@ -209,15 +209,19 @@ ul li:last-child ex {
 
 
 img[alt*="+"] {
-    max-width: 300px;
+    max-width: 25%;
 }
 
 img[alt*="++"] {
-    max-width: 500px;
+    max-width: calc(100% / 3);
 }
 
 img[alt*="+++"] {
-    max-width: 800px;
+    max-width: 50%;
+}
+
+img[alt*="++++"] {
+    max-width: calc(100% / 3 * 2);
 }
 
 @media (max-width: 768px) {
