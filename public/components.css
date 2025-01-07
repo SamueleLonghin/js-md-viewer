@@ -205,3 +205,49 @@ ul li:last-child ex {
         /* Garantisce che inizi su una nuova riga */
     }
 }
+
+
+
+img[alt*="+"] {
+    max-width: 300px;
+}
+
+img[alt*="++"] {
+    max-width: 500px;
+}
+
+img[alt*="+++"] {
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+
+    img[alt*="+"],
+    img[alt*="++"],
+    img[alt*="+++"] {
+        max-width: 100%;
+    }
+}
+
+img[alt$=">"],
+img[alt$="<"],
+img[alt$="><"] {
+    z-index: 100;
+    position: relative;
+}
+
+img[alt$=">"] {
+    float: right;
+}
+
+img[alt$="<"] {
+    float: left;
+}
+
+img[alt$="><"] {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    float: none !important;
+}
