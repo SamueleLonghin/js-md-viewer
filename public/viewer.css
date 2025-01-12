@@ -1,0 +1,55 @@
+/* CSS per Markdown Viewer compatibile con Bootstrap 5 */
+
+
+#content {
+    padding: 2em;
+    overflow-y: auto;
+    float: right;
+    width: 80%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        padding: 0em;
+    }
+}
+
+body.lesson-mode-view #sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    height: 100%;
+    z-index: 999;
+    width: 100%;
+}
+
+body.lesson-mode-view #sidebar.visible {
+    transform: translateX(-0%);
+}
+
+body.lesson-mode-view #content {
+    width: 100%;
+    padding: 0em;
+}
+
+body.lesson-mode-view .code-preview-flex {
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+body.lesson-mode-view .code-preview-flex * {
+    flex: 0;
+}
+
+body.lesson-mode-view #sidebar-toggle {
+    display: block;
+}
+
+.markdown {
+    padding: 1em;
+    margin-bottom: 2em;
+}
+
+.bordered {
+    border: 1px solid #ccc;
+}
+

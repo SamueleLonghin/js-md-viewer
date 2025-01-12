@@ -1,194 +1,3 @@
-/* CSS per Markdown Viewer compatibile con Bootstrap 5 */
-
-body {
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    margin: 0;
-}
-
-#sidebar-toggle {
-    display: none;
-    position: fixed;
-    top: 1em;
-    right: 1em;
-    cursor: pointer;
-    z-index: 1000;
-
-    @media (max-width: 768px) {
-        display: block;
-    }
-}
-
-#sidebar {
-    background: #f0f0f0;
-    transition: transform 0.3s ease;
-    border-right: 1px solid #ddd;
-    width: 20%;
-
-    @media (max-width: 768px) {
-        transform: translateX(-100%);
-        position: fixed;
-        height: 100%;
-        z-index: 999;
-        width: 100%;
-    }
-}
-
-#sidebar>div{
-    height: calc(100vh - 2rem) !important;
-}
-
-#content {
-    padding: 2em;
-    overflow-y: auto;
-    float: right;
-    width: 80%;
-
-    @media (max-width: 768px) {
-        width: 100%;
-        padding: 0em;
-    }
-}
-
-body.lesson-mode-view #sidebar {
-    transform: translateX(-100%);
-    position: fixed;
-    height: 100%;
-    z-index: 999;
-    width: 100%;
-}
-
-body.lesson-mode-view #sidebar.visible {
-    transform: translateX(-0%);
-}
-
-body.lesson-mode-view #content {
-    width: 100%;
-    padding: 0em;
-}
-
-body.lesson-mode-view .code-preview-flex {
-    flex-direction: column;
-    gap: 0.5em;
-    margin-bottom: 1.5em;
-}
-
-body.lesson-mode-view .code-preview-flex * {
-    flex: 0;
-}
-
-body.lesson-mode-view #sidebar-toggle {
-    display: block;
-}
-
-.markdown {
-    padding: 1em;
-    margin-bottom: 2em;
-}
-
-.bordered {
-    border: 1px solid #ccc;
-}
-
-
-.file-link {
-    cursor: pointer;
-    color: var(--bs-primary);
-    text-decoration: none;
-    display: block;
-    border-radius: 4px;
-    padding: 0.05rem;
-    margin: 0.2rem;
-}
-
-.chapter-link {
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 0.7em;
-}
-
-.chapter-link.header-h1 {
-    font-weight: bold;
-    margin-left: 0;
-}
-
-.chapter-link.header-h2 {
-    margin-left: 1em;
-}
-
-.chapter-link.header-h3 {
-    margin-left: 2em;
-}
-
-.chapter-link-copy {
-    visibility: hidden;
-    margin-left: 0.5em; 
-    cursor: pointer;
-    font-size: 0.8em;
-    color: var(--bs-secondary);
-}
-
-h1:hover .chapter-link-copy,
-h2:hover .chapter-link-copy,
-h3:hover .chapter-link-copy,
-h4:hover .chapter-link-copy,
-h5:hover .chapter-link-copy,
-h6:hover .chapter-link-copy {
-    visibility: visible;
-}
-
-@media (max-width: 768px) {
-    #sidebar.visible {
-        transform: translateX(0);
-    }
-}
-
-.file-link:hover {
-    color: var(--bs-primary-dark);
-}
-
-.chapter-link:hover {
-    color: var(--bs-secondary);
-}
-
-
-.title-corso {
-    margin-left: -55px !important;
-    padding-left: 55px;
-
-    @media (max-width: 768px) {
-        margin-left: 0 !important;
-    }
-}
-
-
-body.classic-mode-view .btn-back {
-    /* versione base (schermo grande e non lesson) */
-    @media (min-width: 769px) {
-        width: 100%;
-        padding: 0.25rem 0.5rem !important;
-        font-size: 0.875rem !important;
-        border-radius: var(--bs-border-radius-sm) !important;
-    }
-
-    /* Versione schermo piccolo */
-    @media (max-width: 768px) {
-        margin-right: 50px;
-        width: auto;
-        float: right;
-    }
-}
-
-
-/* versione lesson, resetto il css che ho cambiato prima */
-body.lesson-mode-view .btn-back {
-    margin-right: 50px;
-    width: auto;
-    float: right;
-}
-
-
 #cookie-consent-banner {
     display: none;
     position: fixed;
@@ -234,6 +43,16 @@ body.lesson-mode-view .btn-back {
     background-color: #45a049;
 }
 
+
+
+/* versione lesson, resetto il css che ho cambiato prima */
+body.lesson-mode-view .btn-back {
+    margin-right: 50px;
+    width: auto;
+    float: right;
+}
+
+
 .placeholder-content-loading,
 .placeholder-cookie-request {
     min-height: 70vh;
@@ -250,4 +69,133 @@ body.lesson-mode-view .btn-back {
 
 .placeholder-content-loading::after {
     content: "La risorsa che hai richiesto è in caricamento...";
+}
+
+
+.file-link {
+    cursor: pointer;
+    color: var(--bs-primary);
+    text-decoration: none;
+    display: block;
+    border-radius: 4px;
+    padding: 0.05rem;
+    margin: 0.2rem;
+}
+
+.chapter-link {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.7em;
+}
+
+.chapter-link.header-h1 {
+    font-weight: bold;
+    margin-left: 0;
+}
+
+.chapter-link.header-h2 {
+    margin-left: 1em;
+}
+
+.chapter-link.header-h3 {
+    margin-left: 2em;
+}
+
+.chapter-link-copy {
+    visibility: hidden;
+    margin-left: 0.5em;
+    cursor: pointer;
+    font-size: 0.8em;
+    color: var(--bs-secondary);
+}
+
+h1:hover .chapter-link-copy,
+h2:hover .chapter-link-copy,
+h3:hover .chapter-link-copy,
+h4:hover .chapter-link-copy,
+h5:hover .chapter-link-copy,
+h6:hover .chapter-link-copy {
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    #sidebar.visible {
+        transform: translateX(0);
+    }
+}
+
+.file-link:hover {
+    color: var(--bs-primary-dark);
+}
+
+.chapter-link:hover {
+    color: var(--bs-secondary);
+}
+
+
+.title-corso {
+    margin-left: -55px !important;
+    padding-left: 55px;
+
+    @media (max-width: 768px) {
+        margin-left: 0 !important;
+    }
+}
+
+
+body.classic-mode-view .btn-back {
+
+    /* versione base (schermo grande e non lesson) */
+    @media (min-width: 769px) {
+        width: 100%;
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.875rem !important;
+        border-radius: var(--bs-border-radius-sm) !important;
+    }
+
+    /* Versione schermo piccolo */
+    @media (max-width: 768px) {
+        margin-right: 50px;
+        width: auto;
+        float: right;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+#sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+    z-index: 1000;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+
+#sidebar {
+    background: #f0f0f0;
+    transition: transform 0.3s ease;
+    border-right: 1px solid #ddd;
+    width: 20%;
+
+    @media (max-width: 768px) {
+        transform: translateX(-100%);
+        position: fixed;
+        height: 100%;
+        z-index: 999;
+        width: 100%;
+    }
+}
+
+#sidebar>div {
+    height: calc(100vh - 2rem) !important;
 }

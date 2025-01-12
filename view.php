@@ -7,11 +7,11 @@ $isLessonMode = isset($_GET['lesson']);
 ?>
 
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-            integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-        <link rel="stylesheet" href="<?= $BASE_PATH ?>public/components.css">
-        <link rel="stylesheet" href="<?= $BASE_PATH ?>public/print.css">
-        <link rel="stylesheet" href="<?= $BASE_PATH ?>public/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= $BASE_PATH ?>public/components.css">
+    <link rel="stylesheet" href="<?= $BASE_PATH ?>public/print.css">
+    <link rel="stylesheet" href="<?= $BASE_PATH ?>public/viewer.css">
 </head>
 
 
