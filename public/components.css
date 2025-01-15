@@ -230,6 +230,7 @@ img[alt*="++++"] {
     img[alt*="++"],
     img[alt*="+++"] {
         max-width: 100%;
+        width: 100%;
     }
 }
 
