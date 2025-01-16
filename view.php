@@ -1,5 +1,5 @@
 <?php
-global $macroargomento, $argomento, $topics, $BASE_PATH, $preview, $language, $markdownContent;
+global $macroargomento, $argomento, $topics, $BASE_PATH, $preview, $language, $markdownContent, $enableLatex;
 
 require "head.php";
 $cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted';
@@ -102,7 +102,13 @@ $isLessonMode = isset($_GET['lesson']);
             language = <?= json_encode($language) ?>;
             content = <?= json_encode($markdownContent) ?>;
 
-            displayMarkdownContent(content)
+            container = displayMarkdownContent(content);
+
+            <?php
+            if ($enableLatex) {
+                echo "renderMathInElement(container);";
+            }
+            ?>
         </script>
     <?php } ?>
 </body>

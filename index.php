@@ -35,6 +35,7 @@ if ($macroargomento && isset($topics[$macroargomento]) && (!isset($topics[$macro
 
     $preview = valOrDefault($topics[$macroargomento], "preview", $preview);
     $language = valOrDefault($topics[$macroargomento], "language", $language);
+    $enableLatex = valOrDefault($topics[$macroargomento], "enableLatex", false);
 
     if (!array_key_exists('chapters', $topics[$macroargomento])) {
         $topicFolder = $resourcesFolder . $topics[$macroargomento]['folder'];
@@ -46,6 +47,7 @@ if ($macroargomento && isset($topics[$macroargomento]) && (!isset($topics[$macro
 
         $preview = valOrDefault($topics[$macroargomento]['chapters'][$argomento], "preview", $preview);
         $language = valOrDefault($topics[$macroargomento]['chapters'][$argomento], "language", $language);
+        $enableLatex = valOrDefault($topics[$macroargomento]['chapters'][$argomento], "enableLatex", $enableLatex);
 
         // Carica il contenuto markdown se il percorso è valido
         if ($fileFolderAndName) {

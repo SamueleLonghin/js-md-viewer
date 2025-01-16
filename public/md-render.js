@@ -109,8 +109,10 @@ function previewPython(preElement, codeElement) {
 function renderMathInElement(element) {
     if (typeof katex !== 'undefined') {
         const text = element.innerHTML;
-        const inlineRegex = /(?<!\\)\$(.*?)(?<!\\)\$/g;
-        const blockRegex = /(?<!\\)\$\$(.*?)(?<!\\)\$\$/gs;
+        // const inlineRegex = /\$(.*?)\$/g;
+        // const inlineRegex = /(?<!\\)(?<!\`)\$(.*?)(?<!\`)(?<!\\)\$/g; // ignora \$
+        const inlineRegex = /(?<!\\)(?<!\`)\$(.*?)(?<!\`)(?<!\\)\$/g; // ignora \$
+        const blockRegex = /(?<!\\)(?<!\`)\$\$(.*?)(?<!\\)(?<!\`)\$\$/gs;
 
         // Prima sostituisci i blocchi LaTeX
         const renderedText = text.replace(blockRegex, (match, p1) => {
@@ -220,11 +222,17 @@ function displayMarkdownContent(content) {
     });
 
 
+
     // Aggiungi il supporto per il rendering del codice LaTeX
-    container.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, li').forEach((element) => {
-        if (element.textContent.includes('$')) {
-            console.log("Avrei trovato: ", element)
-            renderMathInElement(element);
-        }
-    });
+    // container.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, li').forEach((element) => {
+    //     if (element.textContent.includes('$')) {
+    //         if (!element.closest('.token')) {
+    //             console.log("Avrei trovato: ", element)
+    //             // renderMathInElement(element);
+    //         } else {
+    //             console.log("Ignorato blocco: ", element, "perché codice")
+    //         }
+    //     }
+    // });
+    return container
 }
