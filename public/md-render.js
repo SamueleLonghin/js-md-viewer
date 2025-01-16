@@ -109,8 +109,8 @@ function previewPython(preElement, codeElement) {
 function renderMathInElement(element) {
     if (typeof katex !== 'undefined') {
         const text = element.innerHTML;
-        const inlineRegex = /\$(.*?)\$/g;
-        const blockRegex = /\$\$(.*?)\$\$/gs;
+        const inlineRegex = /(?<!\\)\$(.*?)(?<!\\)\$/g;
+        const blockRegex = /(?<!\\)\$\$(.*?)(?<!\\)\$\$/gs;
 
         // Prima sostituisci i blocchi LaTeX
         const renderedText = text.replace(blockRegex, (match, p1) => {
