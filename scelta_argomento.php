@@ -1,5 +1,4 @@
 <?php
-// Rendi globali le variabili necessarie
 global $topics, $BASE_PATH, $macroargomento, $title;
 
 require "head.php";
