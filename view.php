@@ -94,7 +94,7 @@ $isLessonMode = isset($_GET['lesson']);
     <script src="<?= $BASE_PATH ?>public/sidebar.js"></script>
     <script src="<?= $BASE_PATH ?>public/md-render.js"></script>
 
-    <div id="raw-content" class="d-none"><?= $markdownContent ?></div>
+    <div id="raw-content" class="d-none"><?= htmlspecialchars($markdownContent, ENT_QUOTES, 'UTF-8') ?></div>
 
     <?php if ($cookieConsent || $ignoreCookies) {
         ?>
