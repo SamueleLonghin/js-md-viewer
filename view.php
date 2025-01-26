@@ -2,7 +2,6 @@
 global $macroargomento, $argomento, $topics, $BASE_PATH, $preview, $language, $markdownContent, $enableLatex;
 
 require "head.php";
-$cookieConsent = (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted') || isset($_GET['no-cookie']);
 $isLessonMode = isset($_GET['lesson']);
 ?>
 
@@ -31,20 +30,22 @@ $isLessonMode = isset($_GET['lesson']);
                     <h2>Documenti</h2>
                     <div id="fileList">
                         <?php
+                        $queryString = http_build_query($_GET);
                         if ($macroargomento) {
                             $macroArgomentoLink = urlencode($macroargomento);
 
                             foreach ($topics[$macroargomento]['chapters'] as $label => $data) {
                                 if (!isset($data['visibility']) || $data['visibility'] == 'visible') {
                                     $link = urlencode($label);
-                                    echo "<a href='/{$macroArgomentoLink}/$link' class='text-reset file-link'> {$label} </a>";
+                                    echo "<a href='/{$macroArgomentoLink}/$link?$queryString' class='text-reset file-link'> {$label} </a>";
                                 }
                             }
                         } else {
+
                             foreach ($topics as $topic => $val) {
                                 $label = $val['label'];
                                 $link = urlencode($topic);
-                                echo "<a href='$link' class='text-reset file-link'> {$label} </a>";
+                                echo "<a href='$link?$queryString' class='text-reset file-link'> {$label} </a>";
                             }
                         }
                         ?>
@@ -62,7 +63,7 @@ $isLessonMode = isset($_GET['lesson']);
         <div id="content">
             <div id="output" class="bordered">
                 <?php
-                if ($cookieConsent) { ?>
+                if ($cookieConsent || $ignoreCookies) { ?>
                     <div class="placeholder-content-loading"></div>
                 <?php } else { ?>
                     <div class="placeholder-cookie-request">
@@ -95,7 +96,7 @@ $isLessonMode = isset($_GET['lesson']);
 
     <div id="raw-content" class="d-none"><?= $markdownContent ?></div>
 
-    <?php if ($cookieConsent) {
+    <?php if ($cookieConsent || $ignoreCookies) {
         ?>
         <script>
             preview = <?= json_encode($preview) ?>;

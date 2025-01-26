@@ -31,6 +31,10 @@ $language = valOrDefault($config, "language");
 // $topics = valOrDefault($config, "topics", []);
 $topics = loadTopics($resourcesFolder);
 
+$cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted';
+
+$ignoreCookies = isset($_GET['no-cookies']);
+
 if ($macroargomento && isset($topics[$macroargomento]) && (!isset($topics[$macroargomento]['visibility']) || $topics[$macroargomento]['visibility'] != 'none')) {
 
     $preview = valOrDefault($topics[$macroargomento], "preview", $preview);

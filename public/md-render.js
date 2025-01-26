@@ -161,8 +161,12 @@ function displayMarkdownContent(content) {
         const chapterLink = document.createElement('a');
         chapterLink.classList.add('text-reset', 'chapter-link', 'header-' + header.tagName.toLowerCase());
         chapterLink.textContent = header.textContent;
-        header.id = encodeURIComponent(header.textContent)
-        chapterLink.href = "#" + header.id;
+        header.id = encodeURIComponent(header.textContent);
+
+        // Aggiungi i parametri GET attuali
+        const currentParams = new URLSearchParams(window.location.search);
+        currentParams.set('chapter', header.id);
+        chapterLink.href = window.location.pathname + '?' + currentParams.toString() + "#" + header.id;
 
         if (toggleSidebar)
             chapterLink.addEventListener('click', toggleSidebar, false);
@@ -177,7 +181,9 @@ function displayMarkdownContent(content) {
         copyIcon.innerHTML = ' '; // Puoi sostituire con un'icona diversa se preferisci
         copyIcon.addEventListener('click', (e) => {
             e.preventDefault();
-            navigator.clipboard.writeText(window.location.href.split('#')[0] + '#' + header.id);
+            const currentParams = new URLSearchParams(window.location.search);
+            currentParams.set('chapter', header.id);
+            navigator.clipboard.writeText(window.location.href.split('#')[0] + '?' + currentParams.toString() + '#' + header.id);
         });
 
         header.appendChild(copyIcon);
