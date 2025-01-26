@@ -2,7 +2,7 @@
 global $macroargomento, $argomento, $topics, $BASE_PATH, $preview, $language, $markdownContent, $enableLatex;
 
 require "head.php";
-$cookieConsent = isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted';
+$cookieConsent = (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accepted') || isset($_GET['no-cookie']);
 $isLessonMode = isset($_GET['lesson']);
 ?>
 
