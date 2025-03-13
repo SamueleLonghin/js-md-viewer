@@ -1,7 +1,7 @@
 <?php
 global $ANALYTICS_ID, $BASE_PATH, $cookieConsent;
 
-if ($ANALYTICS_ID && !$cookieConsent) {
+if ($ANALYTICS_ID) {
     // Se il consenso è dato, includo il codice di Google Analytics
     if ($cookieConsent) { ?>
 
