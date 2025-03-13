@@ -1,7 +1,7 @@
 <?php
 global $ANALYTICS_ID, $BASE_PATH, $cookieConsent;
 
-if ($ANALYTICS_ID && !$cookieConsent) { ?>
+if ($ANALYTICS_ID && $cookieConsent) { ?>
     <div class="cookie-consent-container" id='cookie-consent-banner'>
         Questo sito utilizza cookie per raccogliere dati statistici.
         <button id='accept-cookies'>Accetta</button>
