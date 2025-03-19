@@ -1,8 +1,6 @@
 <?php
 global $ANALYTICS_ID, $BASE_PATH, $cookieConsent;
 
-var_dump($cookieConsent, $ANALYTICS_ID);
-
 if ($ANALYTICS_ID) {
     // Se il consenso è dato, includo il codice di Google Analytics
     if ($cookieConsent) { ?>
