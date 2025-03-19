@@ -1,6 +1,8 @@
 <?php
 global $ANALYTICS_ID, $BASE_PATH, $cookieConsent;
 
+var_dump($cookieConsent, $ANALYTICS_ID);
+
 if ($ANALYTICS_ID) {
     // Se il consenso è dato, includo il codice di Google Analytics
     if ($cookieConsent) { ?>
@@ -14,18 +16,12 @@ if ($ANALYTICS_ID) {
 
             gtag('config', <?= json_encode($ANALYTICS_ID) ?>);
         </script>
-
-        <!-- 
-        <script>
-            window.GA_MEASUREMENT_ID = <?= json_encode($ANALYTICS_ID) ?>
-        </script>
-        <script src='<?= $BASE_PATH ?>public/analytics.js'></script> -->
     <?php }
     // Se il consenso non è dato, mostro il banner per accettare i cookies
     else { ?>
         <div class="cookie-consent-container" id='cookie-consent-banner'>
             Questo sito utilizza cookie per raccogliere dati statistici.
-            <button id='accept-cookies'>Accetta</button>
+            <button id='accept-cookies' onclick="setCookieConsent()">Accetta</button>
             <a href="<?= $BASE_PATH ?>public/privacy-policy.html">Privacy Policy</a>
         </div>
         <script src='<?= $BASE_PATH ?>public/analytics.js'></script>

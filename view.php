@@ -74,7 +74,7 @@ $isLessonMode = isset($_GET['lesson']);
                             <p>
                                 Accetta il trattamento dei dati per visualizzare il contenuto.
                             </p>
-                            <button id='accept-cookies'>Accetta</button>
+                            <button id='accept-cookies' onclick="setCookieConsent()">Accetta</button>
                             <a href="<?= $BASE_PATH ?>public/privacy-policy.html" style="margin-left: 10px;">Privacy
                                 Policy</a>
                         </div>
