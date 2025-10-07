@@ -1,5 +1,7 @@
 {
     "resources-folder": "./risorse/",
     "base-path": "/js-md-viewer//",
-    "title": "Dispensa del professor Longhin"
+    "title": "Dispensa del professor Longhin",
+    "analytics-id": "",
+    "webhook-secret": ""
 }
