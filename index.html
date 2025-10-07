@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Samuele Longhin">
+    <title>Dispensa</title>
+    <link rel="stylesheet" href="public/prism.css">
+    <link rel="stylesheet" href="public/app.css">
+    <link rel="stylesheet" href="public/components.css">
+    <link rel="stylesheet" href="public/print.css">
+    <link rel="stylesheet" href="public/viewer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+        crossorigin="anonymous">
+</head>
+
+<body class="classic-mode-view">
+    <button id="sidebar-toggle" class="btn btn-outline-secondary">☰</button>
+    <div class="d-flex">
+        <aside class="position-fixed overflow-x-auto p-3 overflow-y-auto" id="sidebar">
+            <div class="flex-column flex-nowrap vh-100">
+                <div class="file-section">
+                    <a href="#/" class="btn btn-outline-secondary btn-back">
+                        <i class="bi bi-arrow-left"></i>
+                        <span>Torna ai Corsi</span>
+                    </a>
+                    <h2>Documenti</h2>
+                    <div id="fileList"></div>
+                </div>
+                <div class="chapters-section d-none" id="chapters-section">
+                    <h3>Capitoli</h3>
+                    <div id="chapterList"></div>
+                </div>
+            </div>
+        </aside>
+        <main id="content" class="ms-auto">
+            <header class="sticky-top bg-white mb-2 p-3 d-none" id="topic-header">
+                <a href="#/" class="btn btn-outline-secondary position-absolute">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+                <h1 class="text-center title-corso" id="topic-title"></h1>
+            </header>
+            <div id="output" class="bordered">
+                <div class="placeholder-content-loading" id="initial-placeholder"></div>
+            </div>
+            <div class="cookie-consent-container d-none" id="cookie-consent-banner">
+                <p>Questo sito utilizza cookie per raccogliere dati statistici.</p>
+                <button id="accept-cookies" type="button">Accetta</button>
+                <a href="public/privacy-policy.html" class="ms-2">Privacy Policy</a>
+            </div>
+            <footer class="text-center sticky-bottom bg-white pt-1">
+                <h2>Credits</h2>
+                <p>Creato da Samuele Longhin</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/14.1.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.js"></script>
+    <script src="public/prism.js"></script>
+    <script src="public/sidebar.js"></script>
+    <script src="public/md-render.js"></script>
+    <script src="public/analytics.js"></script>
+    <script src="public/app.js" type="module"></script>
+</body>
+
+</html>

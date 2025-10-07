@@ -156,20 +156,22 @@ function displayMarkdownContent(content) {
     // Genera l'elenco dei capitoli basato sugli header del markdown
     const chapterList = document.getElementById('chapterList');
     chapterList.innerHTML = '';
-    container.querySelectorAll('h1, h2, h3').forEach((header, index) => {
+    const chapterLinkBuilder = typeof window.buildChapterLink === 'function'
+        ? window.buildChapterLink
+        : (anchor) => `${window.location.origin}${window.location.pathname}#${anchor}`;
+
+    container.querySelectorAll('h1, h2, h3').forEach((header) => {
 
         const chapterLink = document.createElement('a');
         chapterLink.classList.add('text-reset', 'chapter-link', 'header-' + header.tagName.toLowerCase());
         chapterLink.textContent = header.textContent;
         header.id = encodeURIComponent(header.textContent);
 
-        // Aggiungi i parametri GET attuali
-        const currentParams = new URLSearchParams(window.location.search);
-        currentParams.set('chapter', header.id);
-        chapterLink.href = window.location.pathname + '?' + currentParams.toString() + "#" + header.id;
+        chapterLink.href = chapterLinkBuilder(header.id);
 
-        if (toggleSidebar)
+        if (typeof toggleSidebar === 'function') {
             chapterLink.addEventListener('click', toggleSidebar, false);
+        }
 
         chapterList.appendChild(chapterLink);
     });
@@ -181,9 +183,8 @@ function displayMarkdownContent(content) {
         copyIcon.innerHTML = ' '; // Puoi sostituire con un'icona diversa se preferisci
         copyIcon.addEventListener('click', (e) => {
             e.preventDefault();
-            const currentParams = new URLSearchParams(window.location.search);
-            currentParams.set('chapter', header.id);
-            navigator.clipboard.writeText(window.location.href.split('#')[0] + '?' + currentParams.toString() + '#' + header.id);
+            const link = chapterLinkBuilder(header.id);
+            navigator.clipboard.writeText(link);
         });
 
         header.appendChild(copyIcon);
