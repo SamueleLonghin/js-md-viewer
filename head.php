@@ -19,4 +19,28 @@ global $argomento, $title, $BASE_PATH;
             href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
             integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <?php
+        global $ANALYTICS_ID, $BASE_PATH, $cookieConsent;
+
+        // if ($ANALYTICS_ID) {
+        // Se il consenso è dato, includo il codice di Google Analytics
+        if ($cookieConsent) { ?>
+
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7VB17TKBW"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+
+                gtag('config', <?= json_encode($ANALYTICS_ID) ?>);
+            </script>
+        <?php } else {
+            // echo "no cookie consent";
+        }
+        // }else{
+        //     echo "no analytics id";
+        // }
+        
+        ?>
     </head>
